@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Heroes</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_home">Home</string>
     <string name="title_favourites">Favourites</string>
+    <string name="access_token_superhero_api">3458535957521457</string>
+
 </resources>
