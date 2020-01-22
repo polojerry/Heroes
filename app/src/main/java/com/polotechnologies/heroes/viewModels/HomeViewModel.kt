@@ -4,10 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.polotechnologies.heroes.network.HeroesApi
-import com.polotechnologies.heroes.dataModels.HeroResponse
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import kotlinx.coroutines.*
 
 class HomeViewModel : ViewModel() {
 
@@ -16,26 +13,32 @@ class HomeViewModel : ViewModel() {
     val heroesData: LiveData<String>
         get() = _heroesData
 
+    private var viewModelJob = Job()
+    private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
+
     init {
         fetchHeroes()
     }
 
+
     private fun fetchHeroes() {
 
-        HeroesApi.retrofitService.getHero().enqueue(object : Callback<HeroResponse>{
-            override fun onFailure(call: Call<HeroResponse>, t: Throwable) {
+        coroutineScope.launch{
+
+            val getHeroDeferred = HeroesApi.retrofitService.getHero()
+
+            try {
+                val heroList = getHeroDeferred.await().results
+                _heroesData.value = "Superheros = ${heroList.size}"
+
+            }catch (t : Throwable){
                 _heroesData.value = "Failure: ${t.message}"
             }
-
-            override fun onResponse(call: Call<HeroResponse>, response: Response<HeroResponse>) {
-                _heroesData.value = "Superhero ${response.body()?.results}"
-            }
-
-        })
+        }
 
     }
 
     override fun onCleared() {
-        _heroesData.value = ""
+        viewModelJob.cancel()
     }
 }
