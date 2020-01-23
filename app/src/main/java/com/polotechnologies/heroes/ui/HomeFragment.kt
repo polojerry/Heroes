@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -50,6 +51,11 @@ class HomeFragment : Fragment() {
     }
 
     private fun inflateSearchMenu() {
+        val toolbar = mBinding.tbMain
+        val searchManager = context!!.getSystemService(Context.SEARCH_SERVICE) as SearchManager
+        (toolbar.menu.findItem(R.id.action_search).actionView as SearchView).apply {
+            setSearchableInfo(searchManager.getSearchableInfo(activity!!.componentName))
+        }
 
     }
 
