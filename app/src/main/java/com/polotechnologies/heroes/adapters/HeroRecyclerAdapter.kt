@@ -25,10 +25,12 @@ class HeroRecyclerAdapter : ListAdapter<Hero, HeroRecyclerAdapter.HeroViewHolder
     class HeroViewHolder private constructor(val binding: ItemHeroBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(hero: Hero) {
-            Glide.with(itemView.context)
+            binding.hero = hero
+            binding.executePendingBindings()
+            /*Glide.with(itemView.context)
                 .load(hero.image.imageUrl)
                 .into(binding.imgHeroImage)
-            binding.tvHeroName.text = hero.name
+            binding.tvHeroName.text = hero.name*/
         }
 
         companion object {
