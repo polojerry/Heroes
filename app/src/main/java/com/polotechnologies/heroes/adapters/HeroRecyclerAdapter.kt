@@ -27,10 +27,6 @@ class HeroRecyclerAdapter : ListAdapter<Hero, HeroRecyclerAdapter.HeroViewHolder
         fun bind(hero: Hero) {
             binding.hero = hero
             binding.executePendingBindings()
-            /*Glide.with(itemView.context)
-                .load(hero.image.imageUrl)
-                .into(binding.imgHeroImage)
-            binding.tvHeroName.text = hero.name*/
         }
 
         companion object {

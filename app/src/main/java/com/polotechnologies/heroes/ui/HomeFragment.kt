@@ -1,11 +1,14 @@
 package com.polotechnologies.heroes.ui
 
 
+import android.app.SearchManager
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -28,6 +31,7 @@ class HomeFragment : Fragment() {
 
         mBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_home, container, false)
         mBinding.lifecycleOwner = this
+        inflateSearchMenu()
 
         mViewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
         mBinding.viewModel = mViewModel
@@ -43,6 +47,10 @@ class HomeFragment : Fragment() {
         })
 
         return mBinding.root
+    }
+
+    private fun inflateSearchMenu() {
+
     }
 
 
