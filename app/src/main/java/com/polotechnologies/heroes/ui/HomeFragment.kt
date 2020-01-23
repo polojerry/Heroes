@@ -7,9 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.polotechnologies.heroes.R
+import com.polotechnologies.heroes.adapters.HeroRecyclerAdapter
 import com.polotechnologies.heroes.databinding.FragmentHomeBinding
 import com.polotechnologies.heroes.viewModels.HomeViewModel
 
@@ -31,6 +32,15 @@ class HomeFragment : Fragment() {
         mViewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
         mBinding.viewModel = mViewModel
 
+
+        val adapter = HeroRecyclerAdapter()
+        mBinding.rvHero.adapter = adapter
+
+        mViewModel.heroesData.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                adapter.submitList(it)
+            }
+        })
 
         return mBinding.root
     }
