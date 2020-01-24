@@ -8,8 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.SearchView
-import androidx.core.content.ContextCompat.getSystemService
+import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -21,7 +20,7 @@ import com.polotechnologies.heroes.viewModels.HomeViewModel
 /**
  * A simple [Fragment] subclass.
  */
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
 
     private lateinit var mBinding: FragmentHomeBinding
     private lateinit var mViewModel : HomeViewModel
@@ -53,10 +52,24 @@ class HomeFragment : Fragment() {
     private fun inflateSearchMenu() {
         val toolbar = mBinding.tbMain
         val searchManager = context!!.getSystemService(Context.SEARCH_SERVICE) as SearchManager
-        (toolbar.menu.findItem(R.id.action_search).actionView as SearchView).apply {
+        val searchWidget = toolbar.menu.findItem(R.id.action_search).actionView as SearchView
+
+        searchWidget.apply {
             setSearchableInfo(searchManager.getSearchableInfo(activity!!.componentName))
+            setOnQueryTextListener(this@HomeFragment)
+            setIconifiedByDefault(false)
+            isSubmitButtonEnabled = false
         }
 
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+
+        return true
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        return true
     }
 
 

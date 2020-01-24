@@ -22,16 +22,31 @@
                 android:id="@+id/app_bar_home"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@+id/rv_hero"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:background="@color/colorWhite">
+                app:layout_constraintTop_toTopOf="parent">
 
-                <com.google.android.material.appbar.MaterialToolbar
-                    android:id="@+id/tb_main"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:menu="@menu/menu_search" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.appbar.MaterialToolbar
+                        android:id="@+id/tb_main"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:menu="@menu/menu_search"
+                        android:gravity="start"
+                        app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"
+                        app:title="Superheros"
+                        app:titleTextColor="@color/colorWhite"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
 
             </com.google.android.material.appbar.AppBarLayout>
 
