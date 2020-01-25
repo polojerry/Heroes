@@ -11,16 +11,19 @@ class HomeViewModel : ViewModel() {
 
     //Response from Server
     private val _heroStatus = MutableLiveData<String>()
-
     val heroStatus: LiveData<String>
         get() = _heroStatus
 
 
     //List from Server
     private val _heroesData = MutableLiveData<List<Hero>>()
-
     val heroesData: LiveData<List<Hero>>
         get() = _heroesData
+
+    //selected hero
+    private val _selectedHero = MutableLiveData<Hero>()
+    val selectedHero : LiveData<Hero>
+        get () = _selectedHero
 
 
     private var viewModelJob = Job()
@@ -50,6 +53,15 @@ class HomeViewModel : ViewModel() {
         }
 
     }
+
+    fun displaySelectedHero(hero : Hero){
+        _selectedHero.value = hero
+    }
+
+    fun displaySelectedHeroComplete(){
+        _selectedHero.value = null
+    }
+
 
     override fun onCleared() {
         viewModelJob.cancel()

@@ -5,11 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.polotechnologies.heroes.dataModels.Hero
 import com.polotechnologies.heroes.databinding.ItemHeroBinding
 
-class HeroRecyclerAdapter : ListAdapter<Hero, HeroRecyclerAdapter.HeroViewHolder>(HeroDiffCallBack()) {
+class HeroRecyclerAdapter(private val onClickListener: OnClickListener) : ListAdapter<Hero, HeroRecyclerAdapter.HeroViewHolder>(HeroDiffCallBack()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HeroViewHolder {
         return HeroViewHolder.from(parent)
@@ -17,6 +16,9 @@ class HeroRecyclerAdapter : ListAdapter<Hero, HeroRecyclerAdapter.HeroViewHolder
 
     override fun onBindViewHolder(holder: HeroViewHolder, position: Int) {
         val hero = getItem(position)
+        holder.itemView.setOnClickListener {
+            onClickListener.onClick(hero)
+        }
         holder.bind(hero)
 
     }
@@ -37,6 +39,10 @@ class HeroRecyclerAdapter : ListAdapter<Hero, HeroRecyclerAdapter.HeroViewHolder
             }
         }
 
+    }
+
+    class OnClickListener(val clickListener : (hero: Hero) -> Unit){
+        fun onClick(hero: Hero) = clickListener(hero)
     }
 
 

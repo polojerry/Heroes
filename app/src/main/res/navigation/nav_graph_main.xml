@@ -9,10 +9,23 @@
         android:id="@+id/homeFragment"
         android:name="com.polotechnologies.heroes.ui.HomeFragment"
         android:label="HomeFragment"
-        tools:layout="@layout/fragment_home"/>
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/favouriteFragment"
         android:name="com.polotechnologies.heroes.ui.FavouriteFragment"
         android:label="FavouriteFragment"
         tools:layout="@layout/fragment_favourite"/>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.polotechnologies.heroes.ui.DetailFragment"
+        android:label="DetailFragment"
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="selectedHero"
+            app:argType="com.polotechnologies.heroes.dataModels.Hero" />
+    </fragment>
 </navigation>
