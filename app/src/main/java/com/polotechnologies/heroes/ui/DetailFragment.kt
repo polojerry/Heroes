@@ -34,8 +34,8 @@ class DetailFragment : Fragment() {
         val superHero = DetailFragmentArgs.fromBundle(arguments!!).selectedHero
         val viewModelFactory  = DetailViewModelFactory(superHero, application)
 
-
         mBinding.viewModel = ViewModelProviders.of(this, viewModelFactory).get(DetailViewModel::class.java)
+        mBinding.ctbDetails.title = superHero.name
 
 
         return mBinding.root
