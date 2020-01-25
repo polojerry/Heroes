@@ -49,6 +49,7 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
                 adapter.submitList(it)
             }
         })
+
         mViewModel.selectedHero.observe(viewLifecycleOwner, Observer {
             if(it!=null){
                 this.findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDetailFragment(it))
@@ -62,12 +63,12 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
     private fun inflateSearchMenu() {
         val toolbar = mBinding.tbMain
         val searchManager = context!!.getSystemService(Context.SEARCH_SERVICE) as SearchManager
-        val searchWidget = toolbar.menu.findItem(R.id.action_search).actionView as SearchView
+        val searchView = toolbar.menu.findItem(R.id.action_search).actionView as SearchView
 
-        searchWidget.apply {
+        searchView.apply {
             setSearchableInfo(searchManager.getSearchableInfo(activity!!.componentName))
             setOnQueryTextListener(this@HomeFragment)
-            setIconifiedByDefault(false)
+            setIconifiedByDefault(true)
             isSubmitButtonEnabled = false
             isIconified = false
         }
