@@ -59,6 +59,7 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
             setOnQueryTextListener(this@HomeFragment)
             setIconifiedByDefault(false)
             isSubmitButtonEnabled = false
+            isIconified = false
         }
 
     }

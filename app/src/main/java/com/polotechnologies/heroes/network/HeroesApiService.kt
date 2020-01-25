@@ -26,7 +26,7 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface HeroesApiService {
-    @GET("search/batman")
+    @GET("search/man")
     fun getHero():
             Deferred<HeroResponse>
 

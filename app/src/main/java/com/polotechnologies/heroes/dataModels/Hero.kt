@@ -1,8 +1,10 @@
 package com.polotechnologies.heroes.dataModels
 
+import android.os.Parcelable
 import com.polotechnologies.heroes.dataModels.heroSubModels.*
+import kotlinx.android.parcel.Parcelize
 
-
+@Parcelize
 data class Hero(
     val name :String,
     val powerstats : HeroPowerStats,
@@ -12,4 +14,4 @@ data class Hero(
     val connections : HeroConnections,
     val image : HeroImage
 
-)
+) : Parcelable

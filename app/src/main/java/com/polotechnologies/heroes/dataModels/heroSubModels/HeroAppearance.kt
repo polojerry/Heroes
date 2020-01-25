@@ -1,7 +1,10 @@
 package com.polotechnologies.heroes.dataModels.heroSubModels
 
+import android.os.Parcelable
 import com.squareup.moshi.Json
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class HeroAppearance(
     val gender: String,
     val race: String,
@@ -10,4 +13,4 @@ data class HeroAppearance(
     @Json(name = "eye-color") val eyeColor : String,
     @Json(name = "hair-color") val hairColor: String
 
-)
+) : Parcelable
