@@ -12,10 +12,12 @@ import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.polotechnologies.heroes.R
 import com.polotechnologies.heroes.adapters.HeroRecyclerAdapter
 import com.polotechnologies.heroes.databinding.FragmentHeroesBinding
+import com.polotechnologies.heroes.uiHosts.HomeFragmentDirections
 import com.polotechnologies.heroes.viewModels.HeroesViewModel
 
 /**
@@ -52,7 +54,8 @@ class HeroesFragment : Fragment(), SearchView.OnQueryTextListener {
 
         mViewModel.selectedHero.observe(viewLifecycleOwner, Observer {
             if(it!=null){
-                this.findNavController().navigate(HeroesFragmentDirections.actionHeroesFragmentToDetailFragment(it))
+                val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(it)
+                activity!!.findNavController(R.id.nav_host_main).navigate(action)
                 mViewModel.displaySelectedHeroComplete()
             }
         })

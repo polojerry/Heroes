@@ -3,29 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph_main"
-    app:startDestination="@id/heroesFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
-        android:id="@+id/heroesFragment"
-        android:name="com.polotechnologies.heroes.ui.HeroesFragment"
-        android:label="HeroesFragment"
-        tools:layout="@layout/fragment_heroes">
+        android:id="@+id/homeFragment"
+        android:name="com.polotechnologies.heroes.uiHosts.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home">
         <action
-            android:id="@+id/action_heroesFragment_to_detailFragment"
+            android:id="@+id/action_homeFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/favouriteFragment"
-        android:name="com.polotechnologies.heroes.ui.FavouriteFragment"
-        android:label="FavouriteFragment"
-        tools:layout="@layout/fragment_favourite"/>
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.polotechnologies.heroes.ui.DetailFragment"
         android:label="DetailFragment"
         tools:layout="@layout/fragment_detail">
         <argument
-            android:name="selectedHero"
+            android:name="hero"
             app:argType="com.polotechnologies.heroes.dataModels.Hero" />
     </fragment>
 </navigation>

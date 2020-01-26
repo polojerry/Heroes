@@ -21,7 +21,6 @@ import com.polotechnologies.heroes.viewModels.DetailViewModelFactory
 class DetailFragment : Fragment() {
 
     lateinit var mBinding: FragmentDetailBinding
-    lateinit var mViewModel: DetailViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
@@ -31,12 +30,11 @@ class DetailFragment : Fragment() {
         mBinding.lifecycleOwner = this
 
         val application = activity!!.application
-        val superHero = DetailFragmentArgs.fromBundle(arguments!!).selectedHero
+        val superHero = DetailFragmentArgs.fromBundle(arguments!!).hero
         val viewModelFactory  = DetailViewModelFactory(superHero, application)
 
         mBinding.viewModel = ViewModelProviders.of(this, viewModelFactory).get(DetailViewModel::class.java)
         mBinding.ctbDetails.title = superHero.name
-
 
         return mBinding.root
     }

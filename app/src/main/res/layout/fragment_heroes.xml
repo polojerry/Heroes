@@ -10,74 +10,56 @@
             type="com.polotechnologies.heroes.viewModels.HeroesViewModel" />
     </data>
 
-    <FrameLayout
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.HeroesFragment">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar_home"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <com.google.android.material.appbar.AppBarLayout
-                android:id="@+id/app_bar_home"
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/tb_main"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@+id/rv_hero"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:theme="@style/AppTheme.DarkActionBar"
+                app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"
+                app:title="@string/toolbar_title_superheros"
+                app:titleTextColor="@color/colorTextIcon"
+                app:menu="@menu/menu_search"/>
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+        </com.google.android.material.appbar.AppBarLayout>
 
-                    <com.google.android.material.appbar.MaterialToolbar
-                        android:id="@+id/tb_main"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:menu="@menu/menu_search"
-                        app:title="@string/toolbar_title_superheros"
-                        app:titleTextColor="@color/colorTextIcon"
-                        android:theme="@style/AppTheme.DarkActionBar"
-                        app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_hero"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/app_bar_home"
+            app:spanCount="2"
+            tools:itemCount="4"
+            tools:listitem="@layout/item_hero" />
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_loading_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:heroApiStatus="@{viewModel.heroStatus}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/app_bar_home" />
 
-
-            </com.google.android.material.appbar.AppBarLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_hero"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/app_bar_home"
-                app:spanCount="2"
-                tools:itemCount="4"
-                tools:listitem="@layout/item_hero" />
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/img_loading_status"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:heroApiStatus="@{viewModel.heroStatus}"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/app_bar_home" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </layout>

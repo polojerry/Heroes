@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_main"
+    app:startDestination="@id/heroesFragment">
+
+    <fragment
+        android:id="@+id/heroesFragment"
+        android:name="com.polotechnologies.heroes.ui.HeroesFragment"
+        android:label="HeroesFragment"
+        tools:layout="@layout/fragment_heroes"/>
+    <fragment
+        android:id="@+id/favouriteFragment"
+        android:name="com.polotechnologies.heroes.ui.FavouriteFragment"
+        android:label="FavouriteFragment"
+        tools:layout="@layout/fragment_favourite"/>
+</navigation>
