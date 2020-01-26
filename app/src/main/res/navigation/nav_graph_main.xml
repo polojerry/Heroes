@@ -3,15 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph_main"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/heroesFragment">
 
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.polotechnologies.heroes.ui.HomeFragment"
-        android:label="HomeFragment"
-        tools:layout="@layout/fragment_home">
+        android:id="@+id/heroesFragment"
+        android:name="com.polotechnologies.heroes.ui.HeroesFragment"
+        android:label="HeroesFragment"
+        tools:layout="@layout/fragment_heroes">
         <action
-            android:id="@+id/action_homeFragment_to_detailFragment"
+            android:id="@+id/action_heroesFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
     </fragment>
     <fragment

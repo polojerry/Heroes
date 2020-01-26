@@ -15,26 +15,26 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.polotechnologies.heroes.R
 import com.polotechnologies.heroes.adapters.HeroRecyclerAdapter
-import com.polotechnologies.heroes.databinding.FragmentHomeBinding
-import com.polotechnologies.heroes.viewModels.HomeViewModel
+import com.polotechnologies.heroes.databinding.FragmentHeroesBinding
+import com.polotechnologies.heroes.viewModels.HeroesViewModel
 
 /**
  * A simple [Fragment] subclass.
  */
-class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
+class HeroesFragment : Fragment(), SearchView.OnQueryTextListener {
 
-    private lateinit var mBinding: FragmentHomeBinding
-    private lateinit var mViewModel : HomeViewModel
+    private lateinit var mBinding: FragmentHeroesBinding
+    private lateinit var mViewModel : HeroesViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
 
-        mBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_home, container, false)
+        mBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_heroes, container, false)
         mBinding.lifecycleOwner = this
         inflateSearchMenu()
 
-        mViewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
+        mViewModel = ViewModelProviders.of(this).get(HeroesViewModel::class.java)
         mBinding.viewModel = mViewModel
 
 
@@ -52,7 +52,7 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
 
         mViewModel.selectedHero.observe(viewLifecycleOwner, Observer {
             if(it!=null){
-                this.findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDetailFragment(it))
+                this.findNavController().navigate(HeroesFragmentDirections.actionHeroesFragmentToDetailFragment(it))
                 mViewModel.displaySelectedHeroComplete()
             }
         })
@@ -67,7 +67,7 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
 
         searchView.apply {
             setSearchableInfo(searchManager.getSearchableInfo(activity!!.componentName))
-            setOnQueryTextListener(this@HomeFragment)
+            setOnQueryTextListener(this@HeroesFragment)
             setIconifiedByDefault(true)
             isSubmitButtonEnabled = false
             isIconified = false

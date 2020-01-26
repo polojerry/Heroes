@@ -7,7 +7,7 @@ import com.polotechnologies.heroes.dataModels.Hero
 import com.polotechnologies.heroes.network.HeroesApi
 import kotlinx.coroutines.*
 
-class HomeViewModel : ViewModel() {
+class HeroesViewModel : ViewModel() {
 
     //Response from Server
     private val _heroStatus = MutableLiveData<HeroApiStatus>()

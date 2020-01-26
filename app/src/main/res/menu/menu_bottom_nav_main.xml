@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:title="@string/title_home"
-        android:id="@+id/homeFragment"
+        android:id="@+id/heroesFragment"
         android:icon="@drawable/ic_home"
         />
 
