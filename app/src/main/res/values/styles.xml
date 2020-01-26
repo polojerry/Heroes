@@ -8,8 +8,12 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppTheme.DarkActionBar" parent="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar">
+        <item name="colorButtonNormal">@color/colorTextIcon</item>
+    </style>
+
     <style name="Heroes.Toolbar" parent="@style/ThemeOverlay.MaterialComponents.ActionBar">
-        <item name="colorButtonNormal">@color/colorWhite</item>
+        <item name="colorButtonNormal">@color/colorTextIcon</item>
     </style>
 
 </resources>

@@ -6,6 +6,7 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.polotechnologies.heroes.R
 import com.polotechnologies.heroes.dataModels.Hero
 import com.polotechnologies.heroes.viewModels.HeroApiStatus
@@ -15,6 +16,9 @@ fun bindImage (imageView: AppCompatImageView, hero : Hero){
     hero.image.imageUrl.let{
         Glide.with(imageView.context)
             .load(hero.image.imageUrl)
+            .apply(RequestOptions()
+                .placeholder(R.drawable.loading_animation)
+                .error(R.drawable.ic_broken_image))
             .into(imageView)
     }
 }
