@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.get
+import androidx.navigation.findNavController
 
 import com.polotechnologies.heroes.R
 import com.polotechnologies.heroes.databinding.FragmentDetailBinding
@@ -35,6 +36,10 @@ class DetailFragment : Fragment() {
 
         mBinding.viewModel = ViewModelProviders.of(this, viewModelFactory).get(DetailViewModel::class.java)
         mBinding.ctbDetails.title = superHero.name
+
+        mBinding.tbDetails.setNavigationOnClickListener{
+            activity!!.onBackPressed()
+        }
 
         return mBinding.root
     }
