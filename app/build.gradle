@@ -74,9 +74,13 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
 
 
-    //moshi converter
+    /*//moshi converter
     implementation "com.squareup.moshi:moshi:$version_moshi"
-    implementation "com.squareup.moshi:moshi-kotlin:$version_moshi"
+    implementation "com.squareup.moshi:moshi-kotlin:$version_moshi"*/
+
+    //kotshi
+    implementation "se.ansman.kotshi:api:2.2.3"
+    kapt "se.ansman.kotshi:compiler:2.2.3"
 
     //coroutines and for retrofit coroutines adapter
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version_kotlin_coroutines"

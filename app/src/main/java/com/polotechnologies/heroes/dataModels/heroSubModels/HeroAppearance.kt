@@ -3,7 +3,9 @@ package com.polotechnologies.heroes.dataModels.heroSubModels
 import android.os.Parcelable
 import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
+import se.ansman.kotshi.JsonSerializable
 
+@JsonSerializable
 @Parcelize
 data class HeroAppearance(
     val gender: String,
