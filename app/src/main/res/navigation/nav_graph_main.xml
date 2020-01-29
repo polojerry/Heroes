@@ -13,8 +13,7 @@
         <action
             android:id="@+id/action_homeFragment_to_detailFragment"
             app:destination="@id/detailFragment"
-            app:enterAnim="@anim/nav_enter_from_right"
-            app:exitAnim="@anim/nav_exit_from_left" />
+            app:enterAnim="@anim/nav_enter_from_right" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"

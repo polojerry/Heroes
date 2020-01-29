@@ -9,11 +9,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
-import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import com.polotechnologies.heroes.R
 import com.polotechnologies.heroes.adapters.HeroRecyclerAdapter
 import com.polotechnologies.heroes.databinding.FragmentHeroesBinding
@@ -27,12 +25,11 @@ class HeroesFragment : Fragment(), SearchView.OnQueryTextListener {
 
     private lateinit var mBinding: FragmentHeroesBinding
     private lateinit var mViewModel : HeroesViewModel
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
 
-        mBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_heroes, container, false)
+        mBinding = FragmentHeroesBinding.inflate(inflater)
         mBinding.lifecycleOwner = this
         inflateSearchMenu()
 
@@ -59,7 +56,6 @@ class HeroesFragment : Fragment(), SearchView.OnQueryTextListener {
                 mViewModel.displaySelectedHeroComplete()
             }
         })
-
         return mBinding.root
     }
 
