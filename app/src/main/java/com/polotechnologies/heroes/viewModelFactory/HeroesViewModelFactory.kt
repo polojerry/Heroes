@@ -14,12 +14,12 @@
  *  limitations under the License.
  */
 
-package com.polotechnologies.heroes.viewModels
+package com.polotechnologies.heroes.viewModelFactory
 
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.polotechnologies.heroes.dataModels.Hero
+import com.polotechnologies.heroes.viewModels.HeroesViewModel
 
 /**
  * Simple ViewModel factory that provides the Hero and context to the ViewModel.
@@ -30,7 +30,10 @@ class HeroesViewModelFactory(
     @Suppress("unchecked_cast")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(HeroesViewModel::class.java)) {
-            return HeroesViewModel(heroName, application) as T
+            return HeroesViewModel(
+                heroName,
+                application
+            ) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

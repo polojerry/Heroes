@@ -17,7 +17,7 @@ import com.polotechnologies.heroes.adapters.HeroRecyclerAdapter
 import com.polotechnologies.heroes.databinding.FragmentHeroesBinding
 import com.polotechnologies.heroes.uiHosts.HomeFragmentDirections
 import com.polotechnologies.heroes.viewModels.HeroesViewModel
-import com.polotechnologies.heroes.viewModels.HeroesViewModelFactory
+import com.polotechnologies.heroes.viewModelFactory.HeroesViewModelFactory
 
 /**
  * A simple [Fragment] subclass.
@@ -35,7 +35,11 @@ class HeroesFragment : Fragment(), SearchView.OnQueryTextListener {
         mBinding.lifecycleOwner = this
         inflateSearchMenu()
 
-        mHeroesViewModelFactory = HeroesViewModelFactory("man", activity!!.application)
+        mHeroesViewModelFactory =
+            HeroesViewModelFactory(
+                "man",
+                activity!!.application
+            )
         mViewModel = ViewModelProviders.of(this, mHeroesViewModelFactory).get(HeroesViewModel::class.java)
         mBinding.viewModel = mViewModel
 
