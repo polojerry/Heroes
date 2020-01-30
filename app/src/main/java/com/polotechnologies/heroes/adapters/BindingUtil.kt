@@ -54,6 +54,8 @@ fun bindStatus(progressBar: ProgressBar, status: HeroApiStatus?) {
             progressBar.visibility = View.GONE
         }
 
-        else -> return
+        HeroApiStatus.ERROR -> {
+            progressBar.visibility = View.GONE
+        }
     }
 }
