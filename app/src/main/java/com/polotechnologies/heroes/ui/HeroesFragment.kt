@@ -17,6 +17,7 @@ import com.polotechnologies.heroes.adapters.HeroRecyclerAdapter
 import com.polotechnologies.heroes.databinding.FragmentHeroesBinding
 import com.polotechnologies.heroes.uiHosts.HomeFragmentDirections
 import com.polotechnologies.heroes.viewModels.HeroesViewModel
+import com.polotechnologies.heroes.viewModels.HeroesViewModelFactory
 
 /**
  * A simple [Fragment] subclass.
@@ -25,6 +26,7 @@ class HeroesFragment : Fragment(), SearchView.OnQueryTextListener {
 
     private lateinit var mBinding: FragmentHeroesBinding
     private lateinit var mViewModel : HeroesViewModel
+    private lateinit var mHeroesViewModelFactory: HeroesViewModelFactory
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
@@ -33,9 +35,9 @@ class HeroesFragment : Fragment(), SearchView.OnQueryTextListener {
         mBinding.lifecycleOwner = this
         inflateSearchMenu()
 
-        mViewModel = ViewModelProviders.of(this).get(HeroesViewModel::class.java)
+        mHeroesViewModelFactory = HeroesViewModelFactory("man", activity!!.application)
+        mViewModel = ViewModelProviders.of(this, mHeroesViewModelFactory).get(HeroesViewModel::class.java)
         mBinding.viewModel = mViewModel
-
 
         val adapter = HeroRecyclerAdapter(HeroRecyclerAdapter.OnClickListener{
             mViewModel.displaySelectedHero(it)
@@ -75,12 +77,12 @@ class HeroesFragment : Fragment(), SearchView.OnQueryTextListener {
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
-
+        mViewModel.fetchHeroes(query)
         return true
     }
 
     override fun onQueryTextChange(newText: String?): Boolean {
-        return true
+        return false
     }
 
 

@@ -7,6 +7,7 @@ import kotlinx.coroutines.Deferred
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 
 private const val ACCESS_TOKEN = "3458535957521457"
@@ -24,8 +25,8 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface HeroesApiService {
-    @GET("search/man")
-    fun getHero():
+    @GET("search/{heroName}")
+    fun getHero(@Path("heroName")heroName: String?):
             Deferred<HeroResponse>
 
 }

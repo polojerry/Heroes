@@ -1,6 +1,7 @@
 package com.polotechnologies.heroes.adapters
 
 import android.view.View
+import android.widget.ProgressBar
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.databinding.BindingAdapter
@@ -12,41 +13,47 @@ import com.polotechnologies.heroes.dataModels.Hero
 import com.polotechnologies.heroes.viewModels.HeroApiStatus
 
 @BindingAdapter("imageUrl")
-fun bindImage (imageView: AppCompatImageView, hero : Hero){
-    hero.image.imageUrl.let{
+fun bindImage(imageView: AppCompatImageView, hero: Hero) {
+    hero.image.imageUrl.let {
         Glide.with(imageView.context)
             .load(hero.image.imageUrl)
-            .apply(RequestOptions()
-                .placeholder(R.drawable.loading_animation)
-                .error(R.drawable.ic_broken_image))
+            .apply(
+                RequestOptions()
+                    .placeholder(R.drawable.loading_animation)
+                    .error(R.drawable.ic_broken_image)
+            )
             .into(imageView)
     }
 }
 
 @BindingAdapter("heroName")
-fun bindText (textView: AppCompatTextView, hero : Hero){
-    hero.name.let{
+fun bindText(textView: AppCompatTextView, hero: Hero) {
+    hero.name.let {
         textView.text = hero.name
     }
 }
 
 @BindingAdapter("heroApiStatus")
-fun bindStatus(imageView: AppCompatImageView, status: HeroApiStatus?){
-    when(status){
-        HeroApiStatus.LOADING ->{
-            imageView.visibility = View.VISIBLE
-            imageView.setImageResource(R.drawable.loading_animation)
+fun bindStatus(imageView: AppCompatImageView, status: HeroApiStatus?) {
+    if (status == HeroApiStatus.ERROR) {
+        imageView.visibility = View.VISIBLE
+        imageView.setImageResource(R.drawable.ic_connection_error)
+
+    }
+}
+
+@BindingAdapter("heroApiStatusProgress")
+fun bindStatus(progressBar: ProgressBar, status: HeroApiStatus?) {
+    when (status) {
+
+        HeroApiStatus.LOADING -> {
+            progressBar.visibility = View.VISIBLE
         }
 
-        HeroApiStatus.ERROR ->{
-            imageView.visibility = View.VISIBLE
-            imageView.setImageResource(R.drawable.ic_connection_error)
+        HeroApiStatus.DONE -> {
+            progressBar.visibility = View.GONE
         }
 
-        HeroApiStatus.DONE->{
-            imageView.visibility = View.GONE
-        }
-
-
+        else -> return
     }
 }
