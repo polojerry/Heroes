@@ -54,6 +54,7 @@
                     app:popupTheme="@style/Theme.MaterialComponents.Light"
                     android:theme="@style/AppTheme.DarkActionBar"
                     app:navigationIcon="@drawable/ic_arrow_back"
+                    app:menu="@menu/menu_details"
                     />
             </com.google.android.material.appbar.CollapsingToolbarLayout>
 
