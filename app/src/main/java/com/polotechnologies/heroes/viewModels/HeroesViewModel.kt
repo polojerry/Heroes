@@ -1,5 +1,6 @@
 package com.polotechnologies.heroes.viewModels
 
+import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -7,7 +8,7 @@ import com.polotechnologies.heroes.dataModels.Hero
 import com.polotechnologies.heroes.network.HeroesApi
 import kotlinx.coroutines.*
 
-class HeroesViewModel : ViewModel() {
+class HeroesViewModel(heroName: String?, app: Application) : ViewModel() {
 
     //Response from Server
     private val _heroStatus = MutableLiveData<HeroApiStatus>()
@@ -29,15 +30,15 @@ class HeroesViewModel : ViewModel() {
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
     init {
-        fetchHeroes()
+        fetchHeroes(heroName)
     }
 
 
-    private fun fetchHeroes() {
+    fun fetchHeroes(heroName: String?) {
 
         coroutineScope.launch {
 
-            val getHeroDeferred = HeroesApi.retrofitService.getHero()
+            val getHeroDeferred = HeroesApi.retrofitService.getHero(heroName)
 
             try {
                 _heroStatus.value = HeroApiStatus.LOADING

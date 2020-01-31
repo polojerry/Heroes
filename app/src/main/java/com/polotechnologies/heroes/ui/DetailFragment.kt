@@ -11,13 +11,11 @@ import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
-import androidx.lifecycle.get
-import androidx.navigation.findNavController
 
 import com.polotechnologies.heroes.R
 import com.polotechnologies.heroes.databinding.FragmentDetailBinding
 import com.polotechnologies.heroes.viewModels.DetailViewModel
-import com.polotechnologies.heroes.viewModels.DetailViewModelFactory
+import com.polotechnologies.heroes.viewModelFactory.DetailViewModelFactory
 
 /**
  * A simple [Fragment] subclass.
@@ -37,7 +35,11 @@ class DetailFragment : Fragment(), Toolbar.OnMenuItemClickListener {
 
         val application = activity!!.application
         val superHero = DetailFragmentArgs.fromBundle(arguments!!).hero
-        val viewModelFactory  = DetailViewModelFactory(superHero, application)
+        val viewModelFactory  =
+            DetailViewModelFactory(
+                superHero,
+                application
+            )
 
         mBinding.viewModel = ViewModelProviders.of(this, viewModelFactory).get(DetailViewModel::class.java)
         mBinding.ctbDetails.title = superHero.name
