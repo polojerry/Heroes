@@ -62,7 +62,7 @@ class DetailFragment : Fragment(), Toolbar.OnMenuItemClickListener {
 
         }
         return true
-        
+
     }
 
 
