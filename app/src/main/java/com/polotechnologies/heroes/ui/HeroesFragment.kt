@@ -6,9 +6,11 @@ import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
+import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
@@ -25,7 +27,7 @@ import com.polotechnologies.heroes.viewModels.HeroApiStatus
 /**
  * A simple [Fragment] subclass.
  */
-class HeroesFragment : Fragment(), SearchView.OnQueryTextListener {
+class HeroesFragment : Fragment(), SearchView.OnQueryTextListener, Toolbar.OnMenuItemClickListener {
 
     private lateinit var mBinding: FragmentHeroesBinding
     private lateinit var mViewModel : HeroesViewModel
@@ -36,6 +38,7 @@ class HeroesFragment : Fragment(), SearchView.OnQueryTextListener {
 
         mBinding = FragmentHeroesBinding.inflate(inflater)
         mBinding.lifecycleOwner = this
+        mBinding.tbMain.setOnMenuItemClickListener(this)
         inflateSearchMenu()
 
         mHeroesViewModelFactory =
@@ -52,23 +55,7 @@ class HeroesFragment : Fragment(), SearchView.OnQueryTextListener {
 
         mBinding.rvHero.adapter = adapter
         mBinding.swipeRefreshHeroes.setOnRefreshListener {
-            mViewModel.fetchHeroes("man")
-            mViewModel.heroStatus.observe(viewLifecycleOwner, Observer {
-                when(it){
-                    HeroApiStatus.DONE ->{
-                        mBinding.imgLoadingStatus.visibility = View.INVISIBLE
-                        mBinding.swipeRefreshHeroes.isRefreshing = false
-                    }
-                    HeroApiStatus.ERROR->{
-                        mBinding.imgLoadingStatus.visibility = View.VISIBLE
-                        mBinding.imgLoadingStatus.setImageResource(R.drawable.ic_connection_error)
-                        mBinding.swipeRefreshHeroes.isRefreshing = false
-                    }
-                    HeroApiStatus.LOADING->{
-                        mBinding.imgLoadingStatus.visibility = View.INVISIBLE
-                    }
-                }
-            })
+            refreshHeroes()
         }
 
         mViewModel.heroesData.observe(viewLifecycleOwner, Observer {
@@ -86,6 +73,26 @@ class HeroesFragment : Fragment(), SearchView.OnQueryTextListener {
         })
 
         return mBinding.root
+    }
+
+    private fun refreshHeroes() {
+        mViewModel.fetchHeroes("man")
+        mViewModel.heroStatus.observe(viewLifecycleOwner, Observer {
+            when (it) {
+                HeroApiStatus.DONE -> {
+                    mBinding.imgLoadingStatus.visibility = View.INVISIBLE
+                    mBinding.swipeRefreshHeroes.isRefreshing = false
+                }
+                HeroApiStatus.ERROR -> {
+                    mBinding.imgLoadingStatus.visibility = View.VISIBLE
+                    mBinding.imgLoadingStatus.setImageResource(R.drawable.ic_connection_error)
+                    mBinding.swipeRefreshHeroes.isRefreshing = false
+                }
+                HeroApiStatus.LOADING -> {
+                    mBinding.imgLoadingStatus.visibility = View.INVISIBLE
+                }
+            }
+        })
     }
 
     private fun inflateSearchMenu() {
@@ -110,6 +117,13 @@ class HeroesFragment : Fragment(), SearchView.OnQueryTextListener {
 
     override fun onQueryTextChange(newText: String?): Boolean {
         return false
+    }
+
+    override fun onMenuItemClick(item: MenuItem?): Boolean {
+        if(item!!.itemId == R.id.action_refresh){
+            refreshHeroes()
+        }
+        return true
     }
 
 
