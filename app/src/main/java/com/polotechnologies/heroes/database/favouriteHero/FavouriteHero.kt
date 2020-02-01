@@ -4,6 +4,7 @@ package com.polotechnologies.heroes.database.favouriteHero
 import android.os.Parcelable
 import androidx.room.*
 import com.polotechnologies.heroes.dataModels.heroSubModels.*
+import com.polotechnologies.heroes.database.typeConverters.AppearanceConverter
 import com.polotechnologies.heroes.database.typeConverters.BiographyConverter
 import com.polotechnologies.heroes.database.typeConverters.PowerStatsConverter
 import kotlinx.android.parcel.Parcelize
@@ -26,6 +27,7 @@ data class FavouriteHero(
     val biography: HeroBiography?,
 
     @ColumnInfo(name = "hero_appearance")
+    @TypeConverters(AppearanceConverter::class)
     val appearance: HeroAppearance?,
 
     @ColumnInfo(name = "hero_work")
