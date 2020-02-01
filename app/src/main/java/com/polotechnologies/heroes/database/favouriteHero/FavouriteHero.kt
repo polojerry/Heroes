@@ -37,6 +37,7 @@ data class FavouriteHero(
     val connections: HeroConnections?,
 
     @ColumnInfo(name = "hero_image")
+    @TypeConverters(ImageConverter::class)
     val image: HeroImage?
 
 ) : Parcelable

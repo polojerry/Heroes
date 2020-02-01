@@ -10,7 +10,8 @@ import com.polotechnologies.heroes.database.favouriteHero.FavouriteHero
 import com.polotechnologies.heroes.database.typeConverters.*
 
 @Database(entities = [FavouriteHero::class], version = 1, exportSchema = false )
-@TypeConverters(PowerStatsConverter::class, BiographyConverter::class, AppearanceConverter::class, WorkConverter::class, ConnectionsConverter::class)
+@TypeConverters(PowerStatsConverter::class, BiographyConverter::class, AppearanceConverter::class,
+    WorkConverter::class, ConnectionsConverter::class, ImageConverter::class)
 abstract class HeroesDatabase : RoomDatabase() {
 
     abstract val daoFavouriteHero : DaoFavouriteHero

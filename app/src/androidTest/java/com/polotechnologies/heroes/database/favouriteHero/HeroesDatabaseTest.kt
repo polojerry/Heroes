@@ -44,7 +44,7 @@ class HeroesDatabaseTest {
         val heroWork = HeroWork("","")
 
         val favouriteHero  = FavouriteHero(0L,
-            "",
+            "test",
             heroPowerStat,
             heroBiography,
             heroAppearance,
@@ -56,7 +56,7 @@ class HeroesDatabaseTest {
 
         val selectedFavouriteHero = heroesDaoFavouriteHero.getLatest()
 
-        assertEquals(selectedFavouriteHero?.name, "")
+        assertEquals(selectedFavouriteHero?.name, "test")
     }
 
 }
