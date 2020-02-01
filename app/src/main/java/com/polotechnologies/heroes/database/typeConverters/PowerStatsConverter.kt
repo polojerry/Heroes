@@ -1,4 +1,4 @@
-package com.polotechnologies.heroes.database.favouriteHero
+package com.polotechnologies.heroes.database.typeConverters
 
 import androidx.room.TypeConverter
 import com.polotechnologies.heroes.dataModels.heroSubModels.HeroPowerStats
@@ -17,7 +17,7 @@ class PowerStatsConverter {
                     "${heroPowerStats.speed}," +
                     "${heroPowerStats.durability}," +
                     "${heroPowerStats.power}," +
-                    "${heroPowerStats.combat},"
+                    heroPowerStats.combat
         }
 
 
