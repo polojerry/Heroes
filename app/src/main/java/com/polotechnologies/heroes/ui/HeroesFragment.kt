@@ -15,9 +15,12 @@ import androidx.navigation.findNavController
 import com.polotechnologies.heroes.R
 import com.polotechnologies.heroes.adapters.HeroRecyclerAdapter
 import com.polotechnologies.heroes.databinding.FragmentHeroesBinding
+import com.polotechnologies.heroes.network.HeroesApi
+import com.polotechnologies.heroes.network.HeroesApiService
 import com.polotechnologies.heroes.uiHosts.HomeFragmentDirections
 import com.polotechnologies.heroes.viewModels.HeroesViewModel
 import com.polotechnologies.heroes.viewModelFactory.HeroesViewModelFactory
+import com.polotechnologies.heroes.viewModels.HeroApiStatus
 
 /**
  * A simple [Fragment] subclass.
@@ -48,6 +51,25 @@ class HeroesFragment : Fragment(), SearchView.OnQueryTextListener {
         })
 
         mBinding.rvHero.adapter = adapter
+        mBinding.swipeRefreshHeroes.setOnRefreshListener {
+            mViewModel.fetchHeroes("man")
+            mViewModel.heroStatus.observe(viewLifecycleOwner, Observer {
+                when(it){
+                    HeroApiStatus.DONE ->{
+                        mBinding.imgLoadingStatus.visibility = View.INVISIBLE
+                        mBinding.swipeRefreshHeroes.isRefreshing = false
+                    }
+                    HeroApiStatus.ERROR->{
+                        mBinding.imgLoadingStatus.visibility = View.VISIBLE
+                        mBinding.imgLoadingStatus.setImageResource(R.drawable.ic_connection_error)
+                        mBinding.swipeRefreshHeroes.isRefreshing = false
+                    }
+                    HeroApiStatus.LOADING->{
+                        mBinding.imgLoadingStatus.visibility = View.INVISIBLE
+                    }
+                }
+            })
+        }
 
         mViewModel.heroesData.observe(viewLifecycleOwner, Observer {
             it?.let {
@@ -62,6 +84,7 @@ class HeroesFragment : Fragment(), SearchView.OnQueryTextListener {
                 mViewModel.displaySelectedHeroComplete()
             }
         })
+
         return mBinding.root
     }
 

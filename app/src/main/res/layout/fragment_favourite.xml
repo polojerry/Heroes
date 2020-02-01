@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
@@ -7,18 +9,46 @@
             type="com.polotechnologies.heroes.viewModels.FavouriteViewModel" />
     </data>
 
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.FavouriteFragment">
+        tools:context=".ui.HeroesFragment">
 
-        <TextView
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar_home"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@{viewModel.favouriteHeroes}" />
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    </FrameLayout>
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/tb_main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/AppTheme.DarkActionBar"
+                app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"
+                app:title="@string/toolbar_title_favourite_superheros"
+                app:titleTextColor="@color/colorTextIcon"
+                app:menu="@menu/menu_search"/>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_favourite_hero"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/app_bar_home"
+            app:spanCount="2"
+            tools:itemCount="4"
+            tools:listitem="@layout/item_hero" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </layout>

@@ -8,5 +8,7 @@
     <string name="search_hint">Search Hero</string>
     <string name="toolbar_title_superheros">Superheros</string>
     <string name="menu_add_to_favourites">Add to Favourites</string>
+    <string name="toolbar_title_favourite_superheros">Favourites</string>
+    <string name="menu_refresh">Refresh</string>
 
 </resources>

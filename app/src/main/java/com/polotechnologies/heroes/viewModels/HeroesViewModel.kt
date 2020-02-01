@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.polotechnologies.heroes.dataModels.Hero
+import com.polotechnologies.heroes.database.HeroesDatabase
 import com.polotechnologies.heroes.network.HeroesApi
 import kotlinx.coroutines.*
 
@@ -74,7 +75,7 @@ class HeroesViewModel(heroName: String?, app: Application) : ViewModel() {
     }
 }
 
-enum class HeroApiStatus{
+public enum class HeroApiStatus{
     LOADING,
     ERROR,
     DONE

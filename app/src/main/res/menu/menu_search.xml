@@ -9,4 +9,9 @@
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         />
 
+    <item
+        android:id="@+id/action_refresh"
+        app:showAsAction="never"
+        android:title="@string/menu_refresh"/>
+
 </menu>
