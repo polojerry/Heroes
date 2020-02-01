@@ -7,6 +7,7 @@ import com.polotechnologies.heroes.dataModels.heroSubModels.*
 import com.polotechnologies.heroes.database.typeConverters.AppearanceConverter
 import com.polotechnologies.heroes.database.typeConverters.BiographyConverter
 import com.polotechnologies.heroes.database.typeConverters.PowerStatsConverter
+import com.polotechnologies.heroes.database.typeConverters.WorkConverter
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
@@ -31,6 +32,7 @@ data class FavouriteHero(
     val appearance: HeroAppearance?,
 
     @ColumnInfo(name = "hero_work")
+    @TypeConverters(WorkConverter::class)
     val work: HeroWork?,
 
     @ColumnInfo(name = "hero_connections")
