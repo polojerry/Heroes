@@ -38,6 +38,7 @@ dependencies {
     def version_life_cycle = "2.2.0"
     def version_kotlin_coroutines = "1.1.0"
     def version_retrofit_coroutines_adapter = "0.9.2"
+    def version_room = "2.2.3"
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -74,8 +75,8 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
 
     //room
-    implementation "android.arch.persistence.room:runtime:1.1.1"
-    annotationProcessor "android.arch.persistence.room:compiler:1.1.1"
+    implementation "androidx.room:room-runtime:$version_room"
+    kapt "androidx.room:room-compiler:$version_room"
 
     //kotshi
     implementation "se.ansman.kotshi:api:2.2.3"

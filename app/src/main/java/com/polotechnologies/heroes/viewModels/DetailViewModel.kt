@@ -19,6 +19,6 @@ class DetailViewModel(hero: Hero, app: Application) : AndroidViewModel(app) {
 
 
     override fun onCleared() {
-        super.onCleared()
+        _selectedHero.value = null
     }
 }
