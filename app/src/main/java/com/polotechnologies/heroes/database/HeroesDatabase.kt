@@ -7,13 +7,10 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.polotechnologies.heroes.database.favouriteHero.DaoFavouriteHero
 import com.polotechnologies.heroes.database.favouriteHero.FavouriteHero
-import com.polotechnologies.heroes.database.typeConverters.AppearanceConverter
-import com.polotechnologies.heroes.database.typeConverters.BiographyConverter
-import com.polotechnologies.heroes.database.typeConverters.PowerStatsConverter
-import com.polotechnologies.heroes.database.typeConverters.WorkConverter
+import com.polotechnologies.heroes.database.typeConverters.*
 
 @Database(entities = [FavouriteHero::class], version = 1, exportSchema = false )
-@TypeConverters(PowerStatsConverter::class, BiographyConverter::class, AppearanceConverter::class, WorkConverter::class)
+@TypeConverters(PowerStatsConverter::class, BiographyConverter::class, AppearanceConverter::class, WorkConverter::class, ConnectionsConverter::class)
 abstract class HeroesDatabase : RoomDatabase() {
 
     abstract val daoFavouriteHero : DaoFavouriteHero

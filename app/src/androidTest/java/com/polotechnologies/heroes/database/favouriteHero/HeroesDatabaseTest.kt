@@ -36,7 +36,7 @@ class HeroesDatabaseTest {
     @Test
     @Throws(IOException::class)
     fun insertFavouriteHero(){
-        val heroApperance  = HeroAppearance("","", listOf(), listOf(), "", "")
+        val heroAppearance  = HeroAppearance("","", listOf(), listOf(), "", "")
         val heroBiography = HeroBiography("","",listOf(),"", "", "","")
         val heroConnections = HeroConnections("", "")
         val heroImage = HeroImage("")
@@ -47,7 +47,7 @@ class HeroesDatabaseTest {
             "",
             heroPowerStat,
             heroBiography,
-            heroApperance,
+            heroAppearance,
             heroWork,
             heroConnections,
             heroImage)

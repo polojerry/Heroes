@@ -4,10 +4,7 @@ package com.polotechnologies.heroes.database.favouriteHero
 import android.os.Parcelable
 import androidx.room.*
 import com.polotechnologies.heroes.dataModels.heroSubModels.*
-import com.polotechnologies.heroes.database.typeConverters.AppearanceConverter
-import com.polotechnologies.heroes.database.typeConverters.BiographyConverter
-import com.polotechnologies.heroes.database.typeConverters.PowerStatsConverter
-import com.polotechnologies.heroes.database.typeConverters.WorkConverter
+import com.polotechnologies.heroes.database.typeConverters.*
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
@@ -36,6 +33,7 @@ data class FavouriteHero(
     val work: HeroWork?,
 
     @ColumnInfo(name = "hero_connections")
+    @TypeConverters(ConnectionsConverter::class)
     val connections: HeroConnections?,
 
     @ColumnInfo(name = "hero_image")
