@@ -9,7 +9,7 @@ import androidx.room.Query
 interface DaoFavouriteHero{
 
     @Insert
-    fun insert(favouriteHero: FavouriteHero)
+    fun insert(favouriteHero: FavouriteHero) : Long
 
     @Query("SELECT * FROM favourite_heroes_table WHERE hero_Id = :heroId")
     fun hero(heroId: Long) : FavouriteHero

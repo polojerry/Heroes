@@ -20,6 +20,7 @@ import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.polotechnologies.heroes.dataModels.Hero
+import com.polotechnologies.heroes.database.favouriteHero.DaoFavouriteHero
 import com.polotechnologies.heroes.viewModels.DetailViewModel
 
 /**
@@ -27,13 +28,15 @@ import com.polotechnologies.heroes.viewModels.DetailViewModel
  */
 class DetailViewModelFactory(
     private val superHero: Hero,
-    private val application: Application) : ViewModelProvider.Factory {
+    private val application: Application,
+    private val database: DaoFavouriteHero) : ViewModelProvider.Factory {
     @Suppress("unchecked_cast")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(DetailViewModel::class.java)) {
             return DetailViewModel(
                 superHero,
-                application
+                application,
+                database
             ) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
