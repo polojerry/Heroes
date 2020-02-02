@@ -50,7 +50,7 @@ class DetailViewModel(hero: Hero, app: Application, val database: DaoFavouriteHe
     }
 
     private suspend fun saveFavouriteHero(favouriteHero: FavouriteHero)  : Long{
-        var insertId: Long = 0L
+        var insertId = 0L
 
         withContext(Dispatchers.IO) {
             insertId = database.insert(favouriteHero)

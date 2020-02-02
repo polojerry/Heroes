@@ -15,7 +15,7 @@ interface DaoFavouriteHero{
     fun hero(heroId: Long) : FavouriteHero
 
     @Query("DELETE FROM favourite_heroes_table")
-    fun clear()
+    fun clear() : Int
 
     @Query("SELECT * FROM favourite_heroes_table ORDER BY hero_id ASC")
     fun favouriteHeroes() : LiveData<List<FavouriteHero>>

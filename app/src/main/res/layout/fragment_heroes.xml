@@ -30,7 +30,7 @@
                 app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"
                 app:title="@string/toolbar_title_superheros"
                 app:titleTextColor="@color/colorTextIcon"
-                app:menu="@menu/menu_search"/>
+                app:menu="@menu/menu_home"/>
 
         </com.google.android.material.appbar.AppBarLayout>
 

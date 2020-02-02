@@ -1,18 +1,12 @@
 package com.polotechnologies.heroes.viewModels
 
 import android.app.Application
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.polotechnologies.heroes.dataModels.Hero
-import com.polotechnologies.heroes.database.HeroesDatabase
 import com.polotechnologies.heroes.database.favouriteHero.DaoFavouriteHero
 import com.polotechnologies.heroes.database.favouriteHero.FavouriteHero
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 class FavouriteViewModel(app: Application, val database: DaoFavouriteHero) : ViewModel() {
 
@@ -21,6 +15,13 @@ class FavouriteViewModel(app: Application, val database: DaoFavouriteHero) : Vie
     val selectedHero: LiveData<FavouriteHero>
         get() = _selectedHero
 
+    //deleted heros
+    private val _deletedHeroes = MutableLiveData<Boolean>()
+    val deletedHeroes: LiveData<Boolean>
+        get() = _deletedHeroes
+
+    val viewModelJob = Job()
+    val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
     val favouriteHero = database.favouriteHeroes()
 
@@ -30,5 +31,21 @@ class FavouriteViewModel(app: Application, val database: DaoFavouriteHero) : Vie
 
     fun displaySelectedHeroComplete() {
         _selectedHero.value = null
+    }
+
+    fun clearFavourites() {
+        coroutineScope.launch {
+            val clearedRows = clearDatabase()
+            if(clearedRows>0) _deletedHeroes.value = true
+        }
+
+    }
+
+    private suspend fun clearDatabase(): Int {
+        var rowCleared = 0
+        withContext(Dispatchers.IO){
+            rowCleared = database.clear()
+        }
+        return rowCleared
     }
 }

@@ -1,12 +1,17 @@
 package com.polotechnologies.heroes.ui
 
 
+import android.app.SearchManager
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.widget.SearchView
+import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -24,7 +29,8 @@ import com.polotechnologies.heroes.viewModels.HeroesViewModel
 /**
  * A simple [Fragment] subclass.
  */
-class FavouriteFragment : Fragment() {
+class FavouriteFragment : Fragment(), SearchView.OnQueryTextListener,
+    Toolbar.OnMenuItemClickListener {
 
     private lateinit var mBinding: FragmentFavouriteBinding
     private lateinit var mViewModel : FavouriteViewModel
@@ -35,6 +41,8 @@ class FavouriteFragment : Fragment() {
 
         mBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_favourite, container, false)
         mBinding.lifecycleOwner = this
+        mBinding.tbMain.setOnMenuItemClickListener(this)
+        inflateSearchMenu()
 
         val application = activity!!.application
         val database = HeroesDatabase.getInstance(application).daoFavouriteHero
@@ -55,8 +63,45 @@ class FavouriteFragment : Fragment() {
             }
         })
 
+        mViewModel.deletedHeroes.observe(viewLifecycleOwner, Observer{
+            when(it){
+                true -> Toast.makeText(context, "Favourite heroes Cleared", Toast.LENGTH_SHORT).show()
+                else-> Toast.makeText(context, "Nothing to clear here!!!", Toast.LENGTH_SHORT).show()
+            }
+        })
+
         return mBinding.root
     }
 
+    private fun inflateSearchMenu() {
+        val toolbar = mBinding.tbMain
+        val searchManager = context!!.getSystemService(Context.SEARCH_SERVICE) as SearchManager
+        val searchView = toolbar.menu.findItem(R.id.action_search).actionView as SearchView
+
+        searchView.apply {
+            setSearchableInfo(searchManager.getSearchableInfo(activity!!.componentName))
+            setOnQueryTextListener(this@FavouriteFragment)
+            setIconifiedByDefault(true)
+            isSubmitButtonEnabled = false
+            isIconified = false
+        }
+
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        return false
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        return false
+    }
+
+    override fun onMenuItemClick(item: MenuItem?): Boolean {
+        when(item!!.itemId){
+            R.id.action_clear -> mViewModel.clearFavourites()
+        }
+
+        return true
+    }
 
 }
