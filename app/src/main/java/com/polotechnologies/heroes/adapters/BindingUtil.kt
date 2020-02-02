@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.polotechnologies.heroes.R
 import com.polotechnologies.heroes.dataModels.Hero
+import com.polotechnologies.heroes.database.favouriteHero.FavouriteHero
 import com.polotechnologies.heroes.viewModels.HeroApiStatus
 
 @BindingAdapter("imageUrl")
@@ -26,10 +27,31 @@ fun bindImage(imageView: AppCompatImageView, hero: Hero) {
     }
 }
 
+@BindingAdapter("favImageUrl")
+fun bindImage(imageView: AppCompatImageView, favouriteHero: FavouriteHero) {
+    favouriteHero.image?.imageUrl.let {
+        Glide.with(imageView.context)
+            .load(favouriteHero.image?.imageUrl)
+            .apply(
+                RequestOptions()
+                    .placeholder(R.drawable.loading_animation)
+                    .error(R.drawable.ic_broken_image)
+            )
+            .into(imageView)
+    }
+}
+
 @BindingAdapter("heroName")
 fun bindText(textView: AppCompatTextView, hero: Hero) {
     hero.name.let {
         textView.text = hero.name
+    }
+}
+
+@BindingAdapter("favHeroName")
+fun bindText(textView: AppCompatTextView, favouriteHero: FavouriteHero) {
+    favouriteHero.name.let {
+        textView.text = favouriteHero.name
     }
 }
 
