@@ -15,16 +15,17 @@ import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.findNavController
 
 import com.polotechnologies.heroes.R
 import com.polotechnologies.heroes.adapters.FavouriteHerosRecyclerAdapter
-import com.polotechnologies.heroes.adapters.HeroRecyclerAdapter
+import com.polotechnologies.heroes.dataModels.Hero
 import com.polotechnologies.heroes.database.HeroesDatabase
+import com.polotechnologies.heroes.database.favouriteHero.FavouriteHero
 import com.polotechnologies.heroes.databinding.FragmentFavouriteBinding
+import com.polotechnologies.heroes.uiHosts.HomeFragmentDirections
 import com.polotechnologies.heroes.viewModelFactory.FavouritesViewModelFactory
-import com.polotechnologies.heroes.viewModelFactory.HeroesViewModelFactory
 import com.polotechnologies.heroes.viewModels.FavouriteViewModel
-import com.polotechnologies.heroes.viewModels.HeroesViewModel
 
 /**
  * A simple [Fragment] subclass.
@@ -63,6 +64,15 @@ class FavouriteFragment : Fragment(), SearchView.OnQueryTextListener,
             }
         })
 
+        mViewModel.selectedHero.observe(viewLifecycleOwner, Observer {
+            if(it!=null){
+                val hero  = favouriteHeroToHero(it)
+                val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(hero)
+                activity!!.findNavController(R.id.nav_host_main).navigate(action)
+                mViewModel.displaySelectedHeroComplete()
+            }
+        })
+
         mViewModel.deletedHeroes.observe(viewLifecycleOwner, Observer{
             when(it){
                 true -> Toast.makeText(context, "Favourite heroes Cleared", Toast.LENGTH_SHORT).show()
@@ -71,6 +81,20 @@ class FavouriteFragment : Fragment(), SearchView.OnQueryTextListener,
         })
 
         return mBinding.root
+    }
+
+    private fun favouriteHeroToHero(favouriteHero: FavouriteHero?): Hero {
+
+        return Hero(
+            favouriteHero!!.name!!,
+            favouriteHero.powerstats!!,
+            favouriteHero.biography!!,
+            favouriteHero.appearance!!,
+            favouriteHero.work!!,
+            favouriteHero.connections!!,
+            favouriteHero.image!!
+        )
+
     }
 
     private fun inflateSearchMenu() {
