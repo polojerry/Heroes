@@ -13,6 +13,7 @@ import com.polotechnologies.heroes.R
 import com.polotechnologies.heroes.dataModels.Hero
 import com.polotechnologies.heroes.database.favouriteHero.FavouriteHero
 import com.polotechnologies.heroes.viewModels.HeroApiStatus
+import de.hdodenhof.circleimageview.CircleImageView
 
 @BindingAdapter("imageUrl")
 fun bindImage(imageView: AppCompatImageView, hero: Hero) {
@@ -33,6 +34,19 @@ fun bindImage(imageView: AppCompatImageView, favouriteHero: FavouriteHero) {
     favouriteHero.image?.imageUrl.let {
         Glide.with(imageView.context)
             .load(favouriteHero.image?.imageUrl)
+            .apply(
+                RequestOptions()
+                    .placeholder(R.drawable.loading_animation)
+                    .error(R.drawable.ic_broken_image)
+            )
+            .into(imageView)
+    }
+}
+@BindingAdapter("favImageUrlCard")
+fun bindImage(imageView: CircleImageView, hero: Hero) {
+    hero.image.imageUrl.let {
+        Glide.with(imageView.context)
+            .load(hero.image.imageUrl)
             .apply(
                 RequestOptions()
                     .placeholder(R.drawable.loading_animation)
