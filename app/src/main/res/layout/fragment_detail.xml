@@ -141,7 +141,8 @@
                             app:srcCompat="@drawable/ic_keyboard_arrow_down" />
 
                         <androidx.constraintlayout.widget.ConstraintLayout
-                            android:id="@+id/constraintLayout"
+                            android:visibility="gone"
+                            android:id="@+id/constraint_layout_biography"
                             android:layout_width="match_parent"
                             android:layout_height="100dp"
                             android:background="@drawable/bat_man"
