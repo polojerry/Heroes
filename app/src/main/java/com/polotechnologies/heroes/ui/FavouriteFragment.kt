@@ -14,7 +14,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 
 import com.polotechnologies.heroes.R
@@ -49,7 +49,7 @@ class FavouriteFragment : Fragment(), SearchView.OnQueryTextListener,
         val database = HeroesDatabase.getInstance(application).daoFavouriteHero
         val mFavouriteViewModelFactory = FavouritesViewModelFactory(application, database)
 
-        mViewModel = ViewModelProviders.of(this, mFavouriteViewModelFactory).get(FavouriteViewModel::class.java)
+        mViewModel = ViewModelProvider(this, mFavouriteViewModelFactory).get(FavouriteViewModel::class.java)
         mBinding.viewModel = mViewModel
 
         val adapter = FavouriteHerosRecyclerAdapter(FavouriteHerosRecyclerAdapter.OnClickListener{
@@ -60,7 +60,7 @@ class FavouriteFragment : Fragment(), SearchView.OnQueryTextListener,
 
         mViewModel.favouriteHero.observe(viewLifecycleOwner, Observer {
             it?.let {
-                adapter.submitList(it)
+                    adapter.submitList(it)
             }
         })
 
@@ -84,7 +84,6 @@ class FavouriteFragment : Fragment(), SearchView.OnQueryTextListener,
     }
 
     private fun favouriteHeroToHero(favouriteHero: FavouriteHero?): Hero {
-
         return Hero(
             favouriteHero!!.name!!,
             favouriteHero.powerstats!!,
@@ -94,7 +93,6 @@ class FavouriteFragment : Fragment(), SearchView.OnQueryTextListener,
             favouriteHero.connections!!,
             favouriteHero.image!!
         )
-
     }
 
     private fun inflateSearchMenu() {
@@ -125,7 +123,6 @@ class FavouriteFragment : Fragment(), SearchView.OnQueryTextListener,
         when(item!!.itemId){
             R.id.action_clear -> mViewModel.clearFavourites()
         }
-
         return true
     }
 

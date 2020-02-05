@@ -12,13 +12,11 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.polotechnologies.heroes.R
 import com.polotechnologies.heroes.adapters.HeroRecyclerAdapter
 import com.polotechnologies.heroes.databinding.FragmentHeroesBinding
-import com.polotechnologies.heroes.network.HeroesApi
-import com.polotechnologies.heroes.network.HeroesApiService
 import com.polotechnologies.heroes.uiHosts.HomeFragmentDirections
 import com.polotechnologies.heroes.viewModels.HeroesViewModel
 import com.polotechnologies.heroes.viewModelFactory.HeroesViewModelFactory
@@ -46,7 +44,7 @@ class HeroesFragment : Fragment(), SearchView.OnQueryTextListener, Toolbar.OnMen
                 "man",
                 activity!!.application
             )
-        mViewModel = ViewModelProviders.of(this, mHeroesViewModelFactory).get(HeroesViewModel::class.java)
+        mViewModel = ViewModelProvider(this, mHeroesViewModelFactory).get(HeroesViewModel::class.java)
         mBinding.viewModel = mViewModel
 
         val adapter = HeroRecyclerAdapter(HeroRecyclerAdapter.OnClickListener{

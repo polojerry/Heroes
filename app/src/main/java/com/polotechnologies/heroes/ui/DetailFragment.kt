@@ -11,7 +11,7 @@ import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 
 import com.polotechnologies.heroes.R
 import com.polotechnologies.heroes.database.HeroesDatabase
@@ -41,8 +41,8 @@ class DetailFragment : Fragment(), Toolbar.OnMenuItemClickListener {
         val database = HeroesDatabase.getInstance(application).daoFavouriteHero
         val viewModelFactory  = DetailViewModelFactory(superHero, application, database)
 
-        mBinding.viewModel = ViewModelProviders.of(this, viewModelFactory).get(DetailViewModel::class.java)
-        mViewModel = ViewModelProviders.of(this, viewModelFactory).get(DetailViewModel::class.java)
+        mBinding.viewModel = ViewModelProvider(this, viewModelFactory).get(DetailViewModel::class.java)
+        mViewModel = ViewModelProvider(this, viewModelFactory).get(DetailViewModel::class.java)
 
         mBinding.ctbDetails.title = superHero.name
 
