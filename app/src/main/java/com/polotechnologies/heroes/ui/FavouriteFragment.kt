@@ -113,7 +113,8 @@ class FavouriteFragment : Fragment(), SearchView.OnQueryTextListener,
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
-        return false
+        mViewModel.searchHero(query)
+        return true
     }
 
     override fun onQueryTextChange(newText: String?): Boolean {

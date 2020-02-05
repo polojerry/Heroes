@@ -11,8 +11,8 @@ interface DaoFavouriteHero{
     @Insert
     fun insert(favouriteHero: FavouriteHero) : Long
 
-    @Query("SELECT * FROM favourite_heroes_table WHERE hero_Id = :heroId")
-    fun hero(heroId: Long) : FavouriteHero
+    @Query("SELECT * FROM favourite_heroes_table WHERE hero_name LIKE :heroName")
+    fun hero(heroName: String?) : LiveData<List<FavouriteHero>>
 
     @Query("DELETE FROM favourite_heroes_table")
     fun clear() : Int
