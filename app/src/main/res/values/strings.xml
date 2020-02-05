@@ -11,5 +11,6 @@
     <string name="toolbar_title_favourite_superheros">Favourites</string>
     <string name="menu_refresh">Refresh</string>
     <string name="menu_clear_favourites">Clear Favourites</string>
+    <string name="heading_biography">Biography</string>
 
 </resources>

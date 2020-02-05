@@ -50,42 +50,44 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    //Glide Dependencies
+    //Glide
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
 
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
 
-    //material design dependency
+    //Material Design
     implementation 'com.google.android.material:material:1.2.0-alpha04'
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
-    // Kotlin navigation component
+    //Kotlin Navigation Component
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
-    //viewModel and lifecycle dependency
+    //ViewModel and Lifecycle
     implementation "androidx.lifecycle:lifecycle-extensions:$version_life_cycle"
 
-    //retrofit dependency
+    //Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-scalars:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
 
-    //room
+    //Room
     implementation "androidx.room:room-runtime:$version_room"
     kapt "androidx.room:room-compiler:$version_room"
 
-    //kotshi
+    //Kotshi
     implementation "se.ansman.kotshi:api:2.2.3"
     kapt "se.ansman.kotshi:compiler:2.2.3"
 
-    //coroutines and for retrofit coroutines adapter
+    //Coroutines and Retrofit Coroutines Adapter
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version_kotlin_coroutines"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version_kotlin_coroutines"
-
     implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$version_retrofit_coroutines_adapter"
 
+    //Circle ImageView
+    implementation 'de.hdodenhof:circleimageview:3.0.0'
+    
 }
