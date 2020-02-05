@@ -55,8 +55,6 @@
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-
-
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/img_loading_status"
             android:layout_width="wrap_content"
