@@ -78,7 +78,6 @@ class HeroesFragment : Fragment(), SearchView.OnQueryTextListener, Toolbar.OnMen
         mViewModel.heroStatus.observe(viewLifecycleOwner, Observer {
             when (it) {
                 HeroApiStatus.DONE -> {
-                    mBinding.imgLoadingStatus.visibility = View.INVISIBLE
                     mBinding.swipeRefreshHeroes.isRefreshing = false
                 }
                 HeroApiStatus.ERROR -> {
@@ -87,7 +86,7 @@ class HeroesFragment : Fragment(), SearchView.OnQueryTextListener, Toolbar.OnMen
                     mBinding.swipeRefreshHeroes.isRefreshing = false
                 }
                 HeroApiStatus.LOADING -> {
-                    mBinding.imgLoadingStatus.visibility = View.INVISIBLE
+                    mBinding.swipeRefreshHeroes.isRefreshing = true
                 }
             }
         })

@@ -6,6 +6,7 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.polotechnologies.heroes.R
@@ -61,23 +62,25 @@ fun bindStatus(imageView: AppCompatImageView, status: HeroApiStatus?) {
         imageView.visibility = View.VISIBLE
         imageView.setImageResource(R.drawable.ic_connection_error)
 
+    }else{
+        imageView.visibility = View.GONE
     }
 }
 
 @BindingAdapter("heroApiStatusProgress")
-fun bindStatus(progressBar: ProgressBar, status: HeroApiStatus?) {
+fun bindStatus(swipeRefreshLayout: SwipeRefreshLayout, status: HeroApiStatus?) {
     when (status) {
 
         HeroApiStatus.LOADING -> {
-            progressBar.visibility = View.VISIBLE
+            swipeRefreshLayout.isRefreshing = true
         }
 
         HeroApiStatus.DONE -> {
-            progressBar.visibility = View.GONE
+            swipeRefreshLayout.isRefreshing = false
         }
 
         HeroApiStatus.ERROR -> {
-            progressBar.visibility = View.GONE
+            swipeRefreshLayout.isRefreshing = false
         }
     }
 }
