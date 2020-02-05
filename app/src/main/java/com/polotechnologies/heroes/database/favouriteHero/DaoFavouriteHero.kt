@@ -20,7 +20,4 @@ interface DaoFavouriteHero{
     @Query("SELECT * FROM favourite_heroes_table ORDER BY hero_id ASC")
     fun favouriteHeroes() : LiveData<List<FavouriteHero>>
 
-    @Query("SELECT * FROM favourite_heroes_table ORDER BY hero_id DESC LIMIT 1")
-    fun getLatest(): FavouriteHero?
-
 }

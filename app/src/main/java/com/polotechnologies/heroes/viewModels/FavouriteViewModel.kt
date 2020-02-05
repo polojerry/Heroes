@@ -29,14 +29,13 @@ class FavouriteViewModel(val app: Application, val database: DaoFavouriteHero) :
     val viewModelJob = Job()
     val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
-    //var favouriteHero = database.favouriteHeroes()
-
     init {
         loadFavourites()
     }
 
     private fun loadFavourites() {
         _favouriteHeroes.value = database.favouriteHeroes()
+
     }
 
     fun displaySelectedHero(favouriteHero: FavouriteHero) {
@@ -64,12 +63,7 @@ class FavouriteViewModel(val app: Application, val database: DaoFavouriteHero) :
     }
 
     fun searchHero(query: String?) {
-        val favouriteHero = database.hero(query)
-        Toast.makeText(
-            app.applicationContext,
-            favouriteHero.value?.size.toString(),
-            Toast.LENGTH_SHORT
-        ).show()
-
+        val appendedQuery = "%${query}%"
+        _favouriteHeroes.value = database.hero(appendedQuery)
     }
 }
