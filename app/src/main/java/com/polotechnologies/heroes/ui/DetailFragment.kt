@@ -57,11 +57,6 @@ class DetailFragment : Fragment(), Toolbar.OnMenuItemClickListener {
             }
         })
 
-        mBinding.icBiographyArrow.setOnClickListener{
-            mBinding.icBiographyArrow.setImageDrawable(resources.getDrawable(R.drawable.ic_keyboard_arrow_right))
-            mBinding.constraintLayoutBiography.visibility = View.VISIBLE
-        }
-
         return mBinding.root
     }
 
