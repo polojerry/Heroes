@@ -119,6 +119,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             tools:text="Batman"
+                            android:text='@{viewModel.selectedHero.biography.fullName}'
                             android:textColor="@android:color/black"
                             android:textSize="16sp"
                             app:layout_constraintStart_toStartOf="@+id/tv_hero_full_name_label"
@@ -149,9 +150,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            tools:text="None Found"
                             android:textColor="@android:color/black"
                             android:textSize="16sp"
+                            android:text="@{viewModel.selectedHero.biography.alterEgos}"
                             app:layout_constraintStart_toStartOf="@+id/tv_hero_alter_egos_label"
                             app:layout_constraintTop_toBottomOf="@+id/tv_hero_alter_egos_label" />
 
@@ -181,7 +182,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            tools:text="Dark Knight"
                             android:textColor="@android:color/black"
                             android:textSize="16sp"
                             app:layout_constraintStart_toStartOf="@+id/tv_hero_aliases_label"
@@ -212,7 +212,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            tools:text="Gotham City"
+                            android:text='@{viewModel.selectedHero.biography.placeOfBirth}'
                             android:textColor="@android:color/black"
                             android:textSize="16sp"
                             app:layout_constraintStart_toStartOf="@+id/tv_hero_place_of_birth_label"
@@ -243,7 +243,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            tools:text="Batman Beyond"
+                            android:text='@{viewModel.selectedHero.biography.firstAppearance}'
                             android:textColor="@android:color/black"
                             android:textSize="16sp"
                             app:layout_constraintStart_toStartOf="@+id/tv_hero_first_appearance_label"
@@ -274,7 +274,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            tools:text="DC Comics"
+                            android:text='@{viewModel.selectedHero.biography.publisher}'
                             android:textColor="@android:color/black"
                             android:textSize="16sp"
                             app:layout_constraintStart_toStartOf="@+id/tv_hero_publisher_label"
