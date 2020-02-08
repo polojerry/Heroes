@@ -12,5 +12,12 @@
     <string name="menu_refresh">Refresh</string>
     <string name="menu_clear_favourites">Clear Favourites</string>
     <string name="heading_biography">Biography</string>
+    <string name="tittle_biography">Biography</string>
+    <string name="label_full_name">Full Name</string>
+    <string name="label_alter_egos">Alter Egos</string>
+    <string name="label_aliases">Aliases</string>
+    <string name="label_place_of_birth">Place of Birth</string>
+    <string name="label_first_appearance">First Appearance</string>
+    <string name="label_publisher">Publisher</string>
 
 </resources>
