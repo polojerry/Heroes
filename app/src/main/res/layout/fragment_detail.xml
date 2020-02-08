@@ -73,7 +73,226 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="8dp">
-                
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_biography_tittle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="2dp"
+                    android:text="Biography"
+                    android:textSize="28sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cv_heroes_biography"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="@android:color/white"
+                    android:padding="4dp"
+                    app:cardElevation="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_biography_tittle">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_hero_full_name_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="4dp"
+                            android:text="Full Name"
+                            android:textSize="14sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_hero_full_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Batman"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            app:layout_constraintStart_toStartOf="@+id/tv_hero_full_name_label"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_hero_full_name_label" />
+
+                        <View
+                            android:id="@+id/divider_name"
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="4dp"
+                            android:background="?android:attr/listDivider"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/tv_hero_full_name"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_hero_full_name" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_hero_alter_egos_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Alter Egoes"
+                            android:textSize="14sp"
+                            app:layout_constraintStart_toStartOf="@+id/divider_name"
+                            app:layout_constraintTop_toBottomOf="@+id/divider_name" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_hero_alter_egos"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="None Found"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            app:layout_constraintStart_toStartOf="@+id/tv_hero_alter_egos_label"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_hero_alter_egos_label" />
+
+                        <View
+                            android:id="@+id/divider_egos"
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="4dp"
+                            android:background="?android:attr/listDivider"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/tv_hero_alter_egos"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_hero_alter_egos" />
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_hero_aliases_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Aliases"
+                            android:textSize="14sp"
+                            app:layout_constraintStart_toStartOf="@+id/divider_egos"
+                            app:layout_constraintTop_toBottomOf="@+id/divider_egos" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_hero_aliases"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Dark Knight"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            app:layout_constraintStart_toStartOf="@+id/tv_hero_aliases_label"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_hero_aliases_label" />
+
+                        <View
+                            android:id="@+id/divider_aliases"
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="4dp"
+                            android:background="?android:attr/listDivider"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/tv_hero_aliases"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_hero_aliases" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_hero_place_of_birth_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Place of Birth"
+                            android:textSize="14sp"
+                            app:layout_constraintStart_toStartOf="@+id/divider_aliases"
+                            app:layout_constraintTop_toBottomOf="@+id/divider_aliases" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_hero_place_of_birth"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Gotham City"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            app:layout_constraintStart_toStartOf="@+id/tv_hero_place_of_birth_label"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_hero_place_of_birth_label" />
+
+                        <View
+                            android:id="@+id/divider_place_of_birth"
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="4dp"
+                            android:background="?android:attr/listDivider"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/tv_hero_place_of_birth"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_hero_place_of_birth" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_hero_first_appearance_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="First Appearance"
+                            android:textSize="14sp"
+                            app:layout_constraintStart_toStartOf="@+id/divider_place_of_birth"
+                            app:layout_constraintTop_toBottomOf="@+id/divider_place_of_birth" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_hero_first_appearance"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Batman Beyond"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            app:layout_constraintStart_toStartOf="@+id/tv_hero_first_appearance_label"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_hero_first_appearance_label" />
+
+                        <View
+                            android:id="@+id/divider_first_appearance"
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="4dp"
+                            android:background="?android:attr/listDivider"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/tv_hero_first_appearance"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_hero_first_appearance" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_hero_publisher_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Publisher"
+                            android:textSize="14sp"
+                            app:layout_constraintStart_toStartOf="@+id/divider_first_appearance"
+                            app:layout_constraintTop_toBottomOf="@+id/divider_first_appearance" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_hero_publisher"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="DC Comics"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            app:layout_constraintStart_toStartOf="@+id/tv_hero_publisher_label"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_hero_publisher_label" />
+
+                        <View
+                            android:id="@+id/divider_publisher"
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="4dp"
+                            android:background="?android:attr/listDivider"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/tv_hero_publisher"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_hero_publisher" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </com.google.android.material.card.MaterialCardView>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
