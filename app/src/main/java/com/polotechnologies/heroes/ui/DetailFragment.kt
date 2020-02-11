@@ -50,10 +50,21 @@ class DetailFragment : Fragment(), Toolbar.OnMenuItemClickListener {
             activity!!.onBackPressed()
         }
 
+        mBinding.btnExpandBiography.setOnClickListener{
+            mViewModel.bibliographyCardAction()
+        }
+
         mViewModel.statusAddToFavourite.observe(viewLifecycleOwner, Observer {
             when(it){
                 true -> Toast.makeText(context, "${mViewModel.selectedHero.value!!.name} Added to Favourites", Toast.LENGTH_SHORT).show()
                 else-> Toast.makeText(context, "Failed to Add to Favourites", Toast.LENGTH_SHORT).show()
+            }
+        })
+
+        mViewModel.isBiographyExpanded.observe(viewLifecycleOwner, Observer{
+            when(it){
+                false -> mBinding.cvHeroesBiography.visibility = View.GONE
+                true -> mBinding.cvHeroesBiography.visibility = View.VISIBLE
             }
         })
 

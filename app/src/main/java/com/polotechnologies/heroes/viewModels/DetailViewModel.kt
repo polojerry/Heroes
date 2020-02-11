@@ -12,6 +12,11 @@ import kotlinx.coroutines.*
 class DetailViewModel(hero: Hero, app: Application, val database: DaoFavouriteHero) :
     AndroidViewModel(app) {
 
+    private val _isBiographyExpanded = MutableLiveData<Boolean>()
+    val isBiographyExpanded: LiveData<Boolean>
+        get() = _isBiographyExpanded
+
+
     private val _selectedHero = MutableLiveData<Hero>()
     val selectedHero: LiveData<Hero>
         get() = _selectedHero
@@ -22,8 +27,8 @@ class DetailViewModel(hero: Hero, app: Application, val database: DaoFavouriteHe
 
     init {
         _selectedHero.value = hero
+        _isBiographyExpanded.value = false
     }
-
 
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
@@ -45,11 +50,11 @@ class DetailViewModel(hero: Hero, app: Application, val database: DaoFavouriteHe
             )
 
             val status = saveFavouriteHero(favouriteHero)
-            _statusAddToFavourite.value = status>0
+            _statusAddToFavourite.value = status > 0
         }
     }
 
-    private suspend fun saveFavouriteHero(favouriteHero: FavouriteHero)  : Long{
+    private suspend fun saveFavouriteHero(favouriteHero: FavouriteHero): Long {
         var insertId = 0L
 
         withContext(Dispatchers.IO) {
@@ -60,8 +65,12 @@ class DetailViewModel(hero: Hero, app: Application, val database: DaoFavouriteHe
 
     }
 
-
     override fun onCleared() {
         viewModelJob.cancel()
+    }
+
+    fun bibliographyCardAction(){
+        _isBiographyExpanded.value = _isBiographyExpanded.value == false
+
     }
 }
