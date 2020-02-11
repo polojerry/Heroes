@@ -95,9 +95,9 @@ class DetailViewModel(hero: Hero, val app: Application, val database: DaoFavouri
 
     fun animateArrow(view: AppCompatImageView, description: String) {
         when(description){
-            "Biography"-> animateBiography(view)
-            "Work"-> animateWork(view)
-            "Connections"->animateConnections(view)
+            app.resources.getString(R.string.tittle_biography)-> animateBiography(view)
+            app.resources.getString(R.string.tittle_work)-> animateWork(view)
+            app.resources.getString(R.string.tittle_connection)->animateConnections(view)
         }
 
     }

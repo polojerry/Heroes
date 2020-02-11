@@ -53,23 +53,24 @@ class DetailFragment : Fragment(), Toolbar.OnMenuItemClickListener {
 
         mBinding.btnExpandBiography.setOnClickListener{
             mViewModel.bibliographyCardAction()
-            mViewModel.animateArrow(it as AppCompatImageView, "Biography")
+            mViewModel.animateArrow(it as AppCompatImageView, context!!.getString(R.string.tittle_biography))
         }
 
         mBinding.btnExpandWork.setOnClickListener{
             mViewModel.workCardAction()
-            mViewModel.animateArrow(it as AppCompatImageView, "Work")
+            mViewModel.animateArrow(it as AppCompatImageView, context!!.getString(R.string.tittle_work))
         }
 
         mBinding.btnExpandConnections.setOnClickListener{
             mViewModel.connectionsCardAction()
-            mViewModel.animateArrow(it as AppCompatImageView, "Connections")
+            mViewModel.animateArrow(it as AppCompatImageView, context!!.getString(R.string.tittle_connection))
         }
 
         mViewModel.statusAddToFavourite.observe(viewLifecycleOwner, Observer {
             when(it){
-                true -> Toast.makeText(context, "${mViewModel.selectedHero.value!!.name} Added to Favourites", Toast.LENGTH_SHORT).show()
-                else-> Toast.makeText(context, "Failed to Add to Favourites", Toast.LENGTH_SHORT).show()
+                true -> Toast.makeText(context,
+                    mViewModel.selectedHero.value!!.name + getString(R.string.info_added_to_favourite), Toast.LENGTH_SHORT).show()
+                else-> Toast.makeText(context, getString(R.string.info_failed_to_add_to_favourite), Toast.LENGTH_SHORT).show()
             }
         })
 
