@@ -19,5 +19,6 @@
     <string name="label_place_of_birth">Place of Birth</string>
     <string name="label_first_appearance">First Appearance</string>
     <string name="label_publisher">Publisher</string>
+    <string name="tittle_work">Work</string>
 
 </resources>

@@ -56,11 +56,16 @@ fun bindImage(imageView: CircleImageView, hero: Hero) {
     }
 }
 
-@BindingAdapter("heroName")
+@BindingAdapter("heroAliases")
 fun bindText(textView: AppCompatTextView, hero: Hero) {
-    hero.name.let {
-        textView.text = hero.name
+    var aliases = ""
+
+    for (alias in hero.biography.aliases){
+        aliases + alias
     }
+
+    aliases = if(aliases == "") "No aliases found." else aliases
+    textView.text = aliases
 }
 
 @BindingAdapter("favHeroName")

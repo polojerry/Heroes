@@ -36,7 +36,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/img_hero_image"
             tools:text="Batman"
-            app:heroName="@{hero}"/>
+            android:text="@{hero.name}"
+            />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
