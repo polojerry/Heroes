@@ -273,12 +273,13 @@
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/tv_hero_publisher"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:text='@{viewModel.selectedHero.biography.publisher}'
                             android:textColor="@android:color/black"
                             android:textSize="16sp"
+                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="@+id/tv_hero_publisher_label"
                             app:layout_constraintTop_toBottomOf="@+id/tv_hero_publisher_label" />
 
@@ -328,12 +329,13 @@
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/tv_hero_occupation"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:text='@{viewModel.selectedHero.work.occupation}'
                             android:textColor="@android:color/black"
                             android:textSize="16sp"
+                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="@+id/tv_hero_occupation_label"
                             app:layout_constraintTop_toBottomOf="@+id/tv_hero_occupation_label" />
 
@@ -359,12 +361,13 @@
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/tv_hero_base"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:text="@{viewModel.selectedHero.work.base}"
                             android:textColor="@android:color/black"
                             android:textSize="16sp"
+                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="@+id/tv_hero_base_label"
                             app:layout_constraintTop_toBottomOf="@+id/tv_hero_base_label" />
 
@@ -416,12 +419,13 @@
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/tv_hero_group_affiliation"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:text='@{viewModel.selectedHero.connections.groupAffiliation}'
                             android:textColor="@android:color/black"
                             android:textSize="16sp"
+                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="@+id/tv_hero_group_affiliation_label"
                             app:layout_constraintTop_toBottomOf="@+id/tv_hero_group_affiliation_label" />
 
@@ -447,12 +451,13 @@
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/tv_hero_relatives"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:text="@{viewModel.selectedHero.connections.relatives}"
                             android:textColor="@android:color/black"
                             android:textSize="16sp"
+                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="@+id/tv_hero_relatives_label"
                             app:layout_constraintTop_toBottomOf="@+id/tv_hero_relatives_label" />
 
