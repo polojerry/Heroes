@@ -9,19 +9,17 @@
             android:viewportWidth="24"
             android:viewportHeight="24">
             <group
-                android:name="grouparrowdownup"
+                android:name="arrowdownup"
                 android:pivotX="12"
                 android:pivotY="12">
                 <path
                     android:name="arrowdown"
                     android:pathData="M 7.41 7.84 L 12 12.42 L 16.59 7.84 L 18 9.25 L 12 15.25 L 6 9.25 Z"
-                    android:strokeColor="#999999"
-                    android:strokeWidth="2"
-                    android:strokeLineCap="square"/>
+                    android:fillColor="#ACACAC"/>
             </group>
         </vector>
     </aapt:attr>
-    <target android:name="grouparrowdownup">
+    <target android:name="arrowdownup">
         <aapt:attr name="android:animation">
             <objectAnimator
                 android:propertyName="rotation"
