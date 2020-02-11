@@ -61,7 +61,7 @@ fun bindText(textView: AppCompatTextView, hero: Hero) {
     var aliases = ""
 
     for (alias in hero.biography.aliases){
-        aliases + alias
+        aliases += alias
     }
 
     aliases = if(aliases == "") "No aliases found." else aliases
