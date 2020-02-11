@@ -54,6 +54,10 @@ class DetailFragment : Fragment(), Toolbar.OnMenuItemClickListener {
             mViewModel.bibliographyCardAction()
         }
 
+        mBinding.btnExpandWork.setOnClickListener{
+            mViewModel.workCardAction()
+        }
+
         mViewModel.statusAddToFavourite.observe(viewLifecycleOwner, Observer {
             when(it){
                 true -> Toast.makeText(context, "${mViewModel.selectedHero.value!!.name} Added to Favourites", Toast.LENGTH_SHORT).show()
@@ -65,6 +69,13 @@ class DetailFragment : Fragment(), Toolbar.OnMenuItemClickListener {
             when(it){
                 false -> mBinding.cvHeroesBiography.visibility = View.GONE
                 true -> mBinding.cvHeroesBiography.visibility = View.VISIBLE
+            }
+        })
+
+        mViewModel.isWorkExpanded.observe(viewLifecycleOwner, Observer{
+            when(it){
+                false -> mBinding.cvHeroesWork.visibility = View.GONE
+                true -> mBinding.cvHeroesWork.visibility = View.VISIBLE
             }
         })
 

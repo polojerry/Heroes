@@ -16,6 +16,10 @@ class DetailViewModel(hero: Hero, app: Application, val database: DaoFavouriteHe
     val isBiographyExpanded: LiveData<Boolean>
         get() = _isBiographyExpanded
 
+    private val _isWorkExpanded = MutableLiveData<Boolean>()
+    val isWorkExpanded: LiveData<Boolean>
+        get() = _isWorkExpanded
+
 
     private val _selectedHero = MutableLiveData<Hero>()
     val selectedHero: LiveData<Hero>
@@ -28,6 +32,7 @@ class DetailViewModel(hero: Hero, app: Application, val database: DaoFavouriteHe
     init {
         _selectedHero.value = hero
         _isBiographyExpanded.value = false
+        _isWorkExpanded.value = false
     }
 
     private var viewModelJob = Job()
@@ -71,6 +76,9 @@ class DetailViewModel(hero: Hero, app: Application, val database: DaoFavouriteHe
 
     fun bibliographyCardAction(){
         _isBiographyExpanded.value = _isBiographyExpanded.value == false
+    }
 
+    fun workCardAction(){
+        _isWorkExpanded.value = _isWorkExpanded.value == false
     }
 }
