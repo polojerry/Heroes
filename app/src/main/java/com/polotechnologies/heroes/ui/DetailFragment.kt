@@ -58,6 +58,10 @@ class DetailFragment : Fragment(), Toolbar.OnMenuItemClickListener {
             mViewModel.workCardAction()
         }
 
+        mBinding.btnExpandConnections.setOnClickListener{
+            mViewModel.connectionsCardAction()
+        }
+
         mViewModel.statusAddToFavourite.observe(viewLifecycleOwner, Observer {
             when(it){
                 true -> Toast.makeText(context, "${mViewModel.selectedHero.value!!.name} Added to Favourites", Toast.LENGTH_SHORT).show()
@@ -76,6 +80,13 @@ class DetailFragment : Fragment(), Toolbar.OnMenuItemClickListener {
             when(it){
                 false -> mBinding.cvHeroesWork.visibility = View.GONE
                 true -> mBinding.cvHeroesWork.visibility = View.VISIBLE
+            }
+        })
+
+        mViewModel.isConnectionsExpanded.observe(viewLifecycleOwner, Observer{
+            when(it){
+                false -> mBinding.cvHeroesConnections.visibility = View.GONE
+                true -> mBinding.cvHeroesConnections.visibility = View.VISIBLE
             }
         })
 

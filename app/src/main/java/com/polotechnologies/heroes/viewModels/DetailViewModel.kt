@@ -20,6 +20,9 @@ class DetailViewModel(hero: Hero, app: Application, val database: DaoFavouriteHe
     val isWorkExpanded: LiveData<Boolean>
         get() = _isWorkExpanded
 
+    private val _isConnectionsExpanded = MutableLiveData<Boolean>()
+    val isConnectionsExpanded: LiveData<Boolean>
+        get() = _isConnectionsExpanded
 
     private val _selectedHero = MutableLiveData<Hero>()
     val selectedHero: LiveData<Hero>
@@ -32,6 +35,7 @@ class DetailViewModel(hero: Hero, app: Application, val database: DaoFavouriteHe
     init {
         _selectedHero.value = hero
         _isBiographyExpanded.value = false
+        _isWorkExpanded.value = false
         _isWorkExpanded.value = false
     }
 
@@ -80,5 +84,9 @@ class DetailViewModel(hero: Hero, app: Application, val database: DaoFavouriteHe
 
     fun workCardAction(){
         _isWorkExpanded.value = _isWorkExpanded.value == false
+    }
+
+    fun connectionsCardAction(){
+        _isConnectionsExpanded.value = _isConnectionsExpanded.value == false
     }
 }
