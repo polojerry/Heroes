@@ -20,5 +20,7 @@
     <string name="label_first_appearance">First Appearance</string>
     <string name="label_publisher">Publisher</string>
     <string name="tittle_work">Work</string>
+    <string name="label_occupation">Occupation</string>
+    <string name="label_base">Base</string>
 
 </resources>
