@@ -8,6 +8,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -52,14 +53,17 @@ class DetailFragment : Fragment(), Toolbar.OnMenuItemClickListener {
 
         mBinding.btnExpandBiography.setOnClickListener{
             mViewModel.bibliographyCardAction()
+            mViewModel.animateArrow(it as AppCompatImageView, "Biography")
         }
 
         mBinding.btnExpandWork.setOnClickListener{
             mViewModel.workCardAction()
+            mViewModel.animateArrow(it as AppCompatImageView, "Work")
         }
 
         mBinding.btnExpandConnections.setOnClickListener{
             mViewModel.connectionsCardAction()
+            mViewModel.animateArrow(it as AppCompatImageView, "Connections")
         }
 
         mViewModel.statusAddToFavourite.observe(viewLifecycleOwner, Observer {
@@ -71,8 +75,12 @@ class DetailFragment : Fragment(), Toolbar.OnMenuItemClickListener {
 
         mViewModel.isBiographyExpanded.observe(viewLifecycleOwner, Observer{
             when(it){
-                false -> mBinding.cvHeroesBiography.visibility = View.GONE
-                true -> mBinding.cvHeroesBiography.visibility = View.VISIBLE
+                false ->{
+                    mBinding.cvHeroesBiography.visibility = View.GONE
+                }
+                true -> {
+                    mBinding.cvHeroesBiography.visibility = View.VISIBLE
+                }
             }
         })
 
@@ -101,12 +109,10 @@ class DetailFragment : Fragment(), Toolbar.OnMenuItemClickListener {
     override fun onMenuItemClick(item: MenuItem?): Boolean {
         when(item?.itemId){
             R.id.action_add_favourite -> mBinding.viewModel!!.addToFavourites()
-
             else-> return false
 
         }
         return true
-
     }
 
 

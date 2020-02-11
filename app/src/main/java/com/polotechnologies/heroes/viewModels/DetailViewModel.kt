@@ -1,15 +1,18 @@
 package com.polotechnologies.heroes.viewModels
 
 import android.app.Application
+import android.graphics.drawable.AnimatedVectorDrawable
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.polotechnologies.heroes.R
 import com.polotechnologies.heroes.dataModels.Hero
 import com.polotechnologies.heroes.database.favouriteHero.DaoFavouriteHero
 import com.polotechnologies.heroes.database.favouriteHero.FavouriteHero
 import kotlinx.coroutines.*
 
-class DetailViewModel(hero: Hero, app: Application, val database: DaoFavouriteHero) :
+class DetailViewModel(hero: Hero, val app: Application, val database: DaoFavouriteHero) :
     AndroidViewModel(app) {
 
     private val _isBiographyExpanded = MutableLiveData<Boolean>()
@@ -89,4 +92,50 @@ class DetailViewModel(hero: Hero, app: Application, val database: DaoFavouriteHe
     fun connectionsCardAction(){
         _isConnectionsExpanded.value = _isConnectionsExpanded.value == false
     }
+
+    fun animateArrow(view: AppCompatImageView, description: String) {
+        when(description){
+            "Biography"-> animateBiography(view)
+            "Work"-> animateWork(view)
+            "Connections"->animateConnections(view)
+        }
+
+    }
+
+    private fun animateBiography(view: AppCompatImageView) {
+        if(_isBiographyExpanded.value == false){
+            animateArrowDownUp(view)
+        }else{
+            animateArrowUpDown(view)
+        }
+    }
+
+    private fun animateWork(view: AppCompatImageView) {
+        if(_isWorkExpanded.value == false){
+            animateArrowDownUp(view)
+        }else{
+            animateArrowUpDown(view)
+        }
+    }
+
+    private fun animateConnections(view: AppCompatImageView) {
+        if(_isConnectionsExpanded.value == false){
+            animateArrowDownUp(view)
+        }else{
+            animateArrowUpDown(view)
+        }
+    }
+
+    private fun animateArrowUpDown(view: AppCompatImageView) {
+        view.setImageResource(R.drawable.avd_arrow_down_up)
+        val avdArrowDownUp = view.drawable as AnimatedVectorDrawable
+        avdArrowDownUp.start()
+    }
+
+    private fun animateArrowDownUp(view: AppCompatImageView) {
+        view.setImageResource(R.drawable.avd_arrow_up_down)
+        val avdArrowDownUp = view.drawable as AnimatedVectorDrawable
+        avdArrowDownUp.start()
+    }
+
 }
