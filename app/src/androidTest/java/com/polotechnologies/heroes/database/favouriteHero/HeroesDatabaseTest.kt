@@ -1,11 +1,13 @@
+/*
 package com.polotechnologies.heroes.database.favouriteHero
 
 import androidx.room.Room
 import androidx.test.platform.app.InstrumentationRegistry
+import com.polotechnologies.heroes.dataModels.FavouriteHero
 import com.polotechnologies.heroes.dataModels.heroSubModels.*
+import com.polotechnologies.heroes.database.FavouriteHeroDao
 import com.polotechnologies.heroes.database.HeroesDatabase
 import junit.framework.Assert.assertEquals
-import org.junit.After
 import org.junit.Before
 
 import org.junit.Test
@@ -13,7 +15,7 @@ import java.io.IOException
 
 class HeroesDatabaseTest {
 
-    lateinit var heroesDaoFavouriteHero: DaoFavouriteHero
+    lateinit var heroesFavouriteHeroDao: FavouriteHeroDao
     lateinit var database : HeroesDatabase
 
     @Before
@@ -24,15 +26,19 @@ class HeroesDatabaseTest {
             .allowMainThreadQueries()
             .build()
 
-        heroesDaoFavouriteHero = database.daoFavouriteHero
+        heroesFavouriteHeroDao = database.favouriteHeroDao
     }
 
-/*    *//*@After
+*/
+/*    *//*
+*/
+/*@After
     @Throws(IOException::class)
     fun closeDatabase() {
         database.close()
     }
-*/
+*//*
+
     @Test
     @Throws(IOException::class)
     fun insertFavouriteHero(){
@@ -43,20 +49,23 @@ class HeroesDatabaseTest {
         val heroPowerStat = HeroPowerStats("","","","","","")
         val heroWork = HeroWork("","")
 
-        val favouriteHero  = FavouriteHero(0L,
-            "test",
-            heroPowerStat,
-            heroBiography,
-            heroAppearance,
-            heroWork,
-            heroConnections,
-            heroImage)
+        val favouriteHero  =
+            FavouriteHero(
+                0L,
+                "test",
+                heroPowerStat,
+                heroBiography,
+                heroAppearance,
+                heroWork,
+                heroConnections,
+                heroImage
+            )
 
-        heroesDaoFavouriteHero.insert(favouriteHero)
+        heroesFavouriteHeroDao.insert(favouriteHero)
 
-        val selectedFavouriteHero = heroesDaoFavouriteHero.getLatest()
+        val selectedFavouriteHero = heroesFavouriteHeroDao.getLatest()
 
         assertEquals(selectedFavouriteHero?.name, "test")
     }
 
-}
+}*/

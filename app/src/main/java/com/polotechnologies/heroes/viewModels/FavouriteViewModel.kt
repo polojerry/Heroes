@@ -1,15 +1,14 @@
 package com.polotechnologies.heroes.viewModels
 
 import android.app.Application
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.polotechnologies.heroes.database.favouriteHero.DaoFavouriteHero
-import com.polotechnologies.heroes.database.favouriteHero.FavouriteHero
+import com.polotechnologies.heroes.database.FavouriteHeroDao
+import com.polotechnologies.heroes.dataModels.FavouriteHero
 import kotlinx.coroutines.*
 
-class FavouriteViewModel(val app: Application, val database: DaoFavouriteHero) : ViewModel() {
+class FavouriteViewModel(val app: Application, val database: FavouriteHeroDao) : ViewModel() {
 
     //selected hero
     private val _selectedHero = MutableLiveData<FavouriteHero>()

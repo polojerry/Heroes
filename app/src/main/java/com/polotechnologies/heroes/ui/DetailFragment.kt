@@ -39,7 +39,7 @@ class DetailFragment : Fragment(), Toolbar.OnMenuItemClickListener {
 
         val application = activity!!.application
         val superHero = DetailFragmentArgs.fromBundle(arguments!!).hero
-        val database = HeroesDatabase.getInstance(application).daoFavouriteHero
+        val database = HeroesDatabase.getInstance(application).favouriteHeroDao
         val viewModelFactory  = DetailViewModelFactory(superHero, application, database)
 
         mBinding.viewModel = ViewModelProvider(this, viewModelFactory).get(DetailViewModel::class.java)

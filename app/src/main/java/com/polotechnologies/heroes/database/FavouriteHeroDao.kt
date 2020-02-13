@@ -1,12 +1,13 @@
-package com.polotechnologies.heroes.database.favouriteHero
+package com.polotechnologies.heroes.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import com.polotechnologies.heroes.dataModels.FavouriteHero
 
 @Dao
-interface DaoFavouriteHero{
+interface FavouriteHeroDao{
 
     @Insert
     fun insert(favouriteHero: FavouriteHero) : Long

@@ -21,7 +21,7 @@ import com.polotechnologies.heroes.R
 import com.polotechnologies.heroes.adapters.FavouriteHerosRecyclerAdapter
 import com.polotechnologies.heroes.dataModels.Hero
 import com.polotechnologies.heroes.database.HeroesDatabase
-import com.polotechnologies.heroes.database.favouriteHero.FavouriteHero
+import com.polotechnologies.heroes.dataModels.FavouriteHero
 import com.polotechnologies.heroes.databinding.FragmentFavouriteBinding
 import com.polotechnologies.heroes.uiHosts.HomeFragmentDirections
 import com.polotechnologies.heroes.viewModelFactory.FavouritesViewModelFactory
@@ -46,7 +46,7 @@ class FavouriteFragment : Fragment(), SearchView.OnQueryTextListener,
         inflateSearchMenu()
 
         val application = activity!!.application
-        val database = HeroesDatabase.getInstance(application).daoFavouriteHero
+        val database = HeroesDatabase.getInstance(application).favouriteHeroDao
         val mFavouriteViewModelFactory = FavouritesViewModelFactory(application, database)
 
         mViewModel = ViewModelProvider(this, mFavouriteViewModelFactory).get(FavouriteViewModel::class.java)

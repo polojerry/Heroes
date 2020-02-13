@@ -8,11 +8,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.polotechnologies.heroes.R
 import com.polotechnologies.heroes.dataModels.Hero
-import com.polotechnologies.heroes.database.favouriteHero.DaoFavouriteHero
-import com.polotechnologies.heroes.database.favouriteHero.FavouriteHero
+import com.polotechnologies.heroes.database.FavouriteHeroDao
+import com.polotechnologies.heroes.dataModels.FavouriteHero
 import kotlinx.coroutines.*
 
-class DetailViewModel(hero: Hero, val app: Application, val database: DaoFavouriteHero) :
+class DetailViewModel(hero: Hero, val app: Application, val database: FavouriteHeroDao) :
     AndroidViewModel(app) {
 
     private val _isBiographyExpanded = MutableLiveData<Boolean>()
@@ -50,16 +50,17 @@ class DetailViewModel(hero: Hero, val app: Application, val database: DaoFavouri
 
         coroutineScope.launch {
             val hero = _selectedHero.value
-            val favouriteHero = FavouriteHero(
-                0L,
-                hero?.name,
-                hero?.powerstats,
-                hero?.biography,
-                hero?.appearance,
-                hero?.work,
-                hero?.connections,
-                hero?.image
-            )
+            val favouriteHero =
+                FavouriteHero(
+                    0L,
+                    hero?.name,
+                    hero?.powerstats,
+                    hero?.biography,
+                    hero?.appearance,
+                    hero?.work,
+                    hero?.connections,
+                    hero?.image
+                )
 
             val status = saveFavouriteHero(favouriteHero)
             _statusAddToFavourite.value = status > 0

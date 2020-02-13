@@ -1,4 +1,4 @@
-package com.polotechnologies.heroes.database.favouriteHero
+package com.polotechnologies.heroes.dataModels
 
 
 import android.os.Parcelable

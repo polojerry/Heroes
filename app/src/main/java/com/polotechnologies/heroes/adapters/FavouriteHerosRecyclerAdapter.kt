@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.polotechnologies.heroes.database.favouriteHero.FavouriteHero
+import com.polotechnologies.heroes.dataModels.FavouriteHero
 import com.polotechnologies.heroes.databinding.ItemFavouriteHeroBinding
 
 class FavouriteHerosRecyclerAdapter(private val onClickListener: OnClickListener) : ListAdapter<FavouriteHero, FavouriteHerosRecyclerAdapter.FavouriteHeroViewHolder>(HeroDiffCallBack()) {

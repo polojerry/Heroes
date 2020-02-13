@@ -1,17 +1,15 @@
 package com.polotechnologies.heroes.adapters
 
 import android.view.View
-import android.widget.ProgressBar
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.databinding.BindingAdapter
-import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.polotechnologies.heroes.R
 import com.polotechnologies.heroes.dataModels.Hero
-import com.polotechnologies.heroes.database.favouriteHero.FavouriteHero
+import com.polotechnologies.heroes.dataModels.FavouriteHero
 import com.polotechnologies.heroes.viewModels.HeroApiStatus
 import de.hdodenhof.circleimageview.CircleImageView
 
