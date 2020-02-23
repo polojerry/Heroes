@@ -52,14 +52,13 @@ class DetailViewModel(hero: Hero, val app: Application, val database: FavouriteH
             val hero = _selectedHero.value
             val favouriteHero =
                 FavouriteHero(
-                    0L,
-                    hero?.name,
-                    hero?.powerstats,
-                    hero?.biography,
-                    hero?.appearance,
-                    hero?.work,
-                    hero?.connections,
-                    hero?.image
+                    hero!!.name,
+                    hero.powerstats,
+                    hero.biography,
+                    hero.appearance,
+                    hero.work,
+                    hero.connections,
+                    hero.image
                 )
 
             val status = saveFavouriteHero(favouriteHero)

@@ -10,11 +10,9 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 @Entity(tableName = "favourite_heroes_table")
 data class FavouriteHero(
-    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "hero_id")
-    val heroId: Long = 0L,
-
+    @PrimaryKey
     @ColumnInfo(name = "hero_name")
-    val name: String?,
+    val name: String,
 
     @ColumnInfo(name = "hero_power_stats")
     @TypeConverters(PowerStatsConverter::class)

@@ -48,7 +48,7 @@ class FavouriteHerosRecyclerAdapter(private val onClickListener: OnClickListener
 
     class HeroDiffCallBack : DiffUtil.ItemCallback<FavouriteHero>(){
         override fun areItemsTheSame(oldItem: FavouriteHero, newItem: FavouriteHero): Boolean {
-            return oldItem.heroId == newItem.heroId
+            return oldItem.name== newItem.name
         }
 
         override fun areContentsTheSame(oldItem: FavouriteHero, newItem: FavouriteHero): Boolean {
