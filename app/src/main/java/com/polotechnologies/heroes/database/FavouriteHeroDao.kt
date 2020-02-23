@@ -5,7 +5,6 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.polotechnologies.heroes.dataModels.FavouriteHero
 import com.polotechnologies.heroes.dataModels.Hero
 
 @Dao

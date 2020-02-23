@@ -5,11 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.polotechnologies.heroes.dataModels.FavouriteHero
 import com.polotechnologies.heroes.dataModels.Hero
 import com.polotechnologies.heroes.databinding.ItemFavouriteHeroBinding
 
-class FavouriteHerosRecyclerAdapter(private val onClickListener: OnClickListener) : ListAdapter<Hero, FavouriteHerosRecyclerAdapter.FavouriteHeroViewHolder>(HeroDiffCallBack()) {
+class FavouriteHeroesRecyclerAdapter(private val onClickListener: OnClickListener) : ListAdapter<Hero, FavouriteHeroesRecyclerAdapter.FavouriteHeroViewHolder>(HeroDiffCallBack()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavouriteHeroViewHolder {
         return FavouriteHeroViewHolder.from(parent)

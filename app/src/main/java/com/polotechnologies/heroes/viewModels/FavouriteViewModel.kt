@@ -5,7 +5,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.polotechnologies.heroes.database.FavouriteHeroDao
-import com.polotechnologies.heroes.dataModels.FavouriteHero
 import com.polotechnologies.heroes.dataModels.Hero
 import kotlinx.coroutines.*
 

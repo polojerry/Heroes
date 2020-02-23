@@ -18,7 +18,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 
 import com.polotechnologies.heroes.R
-import com.polotechnologies.heroes.adapters.FavouriteHerosRecyclerAdapter
+import com.polotechnologies.heroes.adapters.FavouriteHeroesRecyclerAdapter
 import com.polotechnologies.heroes.database.HeroesDatabase
 import com.polotechnologies.heroes.databinding.FragmentFavouriteBinding
 import com.polotechnologies.heroes.uiHosts.HomeFragmentDirections
@@ -50,7 +50,7 @@ class FavouriteFragment : Fragment(), SearchView.OnQueryTextListener,
         mViewModel = ViewModelProvider(this, mFavouriteViewModelFactory).get(FavouriteViewModel::class.java)
         mBinding.viewModel = mViewModel
 
-        val adapter = FavouriteHerosRecyclerAdapter(FavouriteHerosRecyclerAdapter.OnClickListener{
+        val adapter = FavouriteHeroesRecyclerAdapter(FavouriteHeroesRecyclerAdapter.OnClickListener{
             mViewModel.displaySelectedHero(it)
         })
 

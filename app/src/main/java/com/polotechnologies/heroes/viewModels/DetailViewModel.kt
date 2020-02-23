@@ -9,7 +9,6 @@ import androidx.lifecycle.MutableLiveData
 import com.polotechnologies.heroes.R
 import com.polotechnologies.heroes.dataModels.Hero
 import com.polotechnologies.heroes.database.FavouriteHeroDao
-import com.polotechnologies.heroes.dataModels.FavouriteHero
 import kotlinx.coroutines.*
 
 class DetailViewModel(hero: Hero, val app: Application, val database: FavouriteHeroDao) :
