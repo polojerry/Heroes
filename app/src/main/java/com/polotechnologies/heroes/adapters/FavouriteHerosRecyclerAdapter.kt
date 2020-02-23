@@ -6,9 +6,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.polotechnologies.heroes.dataModels.FavouriteHero
+import com.polotechnologies.heroes.dataModels.Hero
 import com.polotechnologies.heroes.databinding.ItemFavouriteHeroBinding
 
-class FavouriteHerosRecyclerAdapter(private val onClickListener: OnClickListener) : ListAdapter<FavouriteHero, FavouriteHerosRecyclerAdapter.FavouriteHeroViewHolder>(HeroDiffCallBack()) {
+class FavouriteHerosRecyclerAdapter(private val onClickListener: OnClickListener) : ListAdapter<Hero, FavouriteHerosRecyclerAdapter.FavouriteHeroViewHolder>(HeroDiffCallBack()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavouriteHeroViewHolder {
         return FavouriteHeroViewHolder.from(parent)
@@ -26,7 +27,7 @@ class FavouriteHerosRecyclerAdapter(private val onClickListener: OnClickListener
 
     class FavouriteHeroViewHolder private constructor(val binding: ItemFavouriteHeroBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(favouriteHero: FavouriteHero) {
+        fun bind(favouriteHero: Hero) {
             binding.favouriteHero = favouriteHero
             binding.executePendingBindings()
         }
@@ -41,17 +42,17 @@ class FavouriteHerosRecyclerAdapter(private val onClickListener: OnClickListener
 
     }
 
-    class OnClickListener(val clickListener : (favouriteHero: FavouriteHero) -> Unit){
-        fun onClick(favouriteHero: FavouriteHero) = clickListener(favouriteHero)
+    class OnClickListener(val clickListener : (hero: Hero) -> Unit){
+        fun onClick(favouriteHero: Hero) = clickListener(favouriteHero)
     }
 
 
-    class HeroDiffCallBack : DiffUtil.ItemCallback<FavouriteHero>(){
-        override fun areItemsTheSame(oldItem: FavouriteHero, newItem: FavouriteHero): Boolean {
+    class HeroDiffCallBack : DiffUtil.ItemCallback<Hero>(){
+        override fun areItemsTheSame(oldItem: Hero, newItem: Hero): Boolean {
             return oldItem.name== newItem.name
         }
 
-        override fun areContentsTheSame(oldItem: FavouriteHero, newItem: FavouriteHero): Boolean {
+        override fun areContentsTheSame(oldItem: Hero, newItem: Hero): Boolean {
             return oldItem == newItem
         }
 

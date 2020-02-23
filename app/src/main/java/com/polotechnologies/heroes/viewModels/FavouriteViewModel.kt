@@ -6,13 +6,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.polotechnologies.heroes.database.FavouriteHeroDao
 import com.polotechnologies.heroes.dataModels.FavouriteHero
+import com.polotechnologies.heroes.dataModels.Hero
 import kotlinx.coroutines.*
 
 class FavouriteViewModel(val app: Application, val database: FavouriteHeroDao) : ViewModel() {
 
     //selected hero
-    private val _selectedHero = MutableLiveData<FavouriteHero>()
-    val selectedHero: LiveData<FavouriteHero>
+    private val _selectedHero = MutableLiveData<Hero>()
+    val selectedHero: LiveData<Hero>
         get() = _selectedHero
 
     //deleted heroes
@@ -21,8 +22,8 @@ class FavouriteViewModel(val app: Application, val database: FavouriteHeroDao) :
         get() = _deletedHeroes
 
     //favourite heroes
-    private val _favouriteHeroes = MutableLiveData<LiveData<List<FavouriteHero>>>()
-    val favouriteHero: LiveData<List<FavouriteHero>>
+    private val _favouriteHeroes = MutableLiveData<LiveData<List<Hero>>>()
+    val favouriteHero: LiveData<List<Hero>>
         get() = _favouriteHeroes.value!!
 
     val viewModelJob = Job()
@@ -37,7 +38,7 @@ class FavouriteViewModel(val app: Application, val database: FavouriteHeroDao) :
 
     }
 
-    fun displaySelectedHero(favouriteHero: FavouriteHero) {
+    fun displaySelectedHero(favouriteHero: Hero) {
         _selectedHero.value = favouriteHero
     }
 

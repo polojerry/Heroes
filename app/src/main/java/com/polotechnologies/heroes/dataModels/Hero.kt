@@ -12,7 +12,7 @@ import se.ansman.kotshi.JsonSerializable
 
 @JsonSerializable
 @Parcelize
-@Entity(tableName = "heroes_table")
+@Entity(tableName = "favourite_heroes_table")
 data class Hero(
     @PrimaryKey @ColumnInfo(name = "hero_name")
     val name :String,

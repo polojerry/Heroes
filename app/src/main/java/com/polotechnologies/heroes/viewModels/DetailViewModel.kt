@@ -50,7 +50,7 @@ class DetailViewModel(hero: Hero, val app: Application, val database: FavouriteH
 
         coroutineScope.launch {
             val hero = _selectedHero.value
-            val favouriteHero =
+            /*val favouriteHero =
                 FavouriteHero(
                     hero!!.name,
                     hero.powerstats,
@@ -60,17 +60,17 @@ class DetailViewModel(hero: Hero, val app: Application, val database: FavouriteH
                     hero.connections,
                     hero.image
                 )
-
-            val status = saveFavouriteHero(favouriteHero)
+*/
+            val status = saveFavouriteHero(hero!!)
             _statusAddToFavourite.value = status > 0
         }
     }
 
-    private suspend fun saveFavouriteHero(favouriteHero: FavouriteHero): Long {
+    private suspend fun saveFavouriteHero(hero: Hero): Long {
         var insertId = 0L
 
         withContext(Dispatchers.IO) {
-            insertId = database.insert(favouriteHero)
+            insertId = database.insert(hero)
         }
 
         return insertId

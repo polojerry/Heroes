@@ -19,9 +19,7 @@ import androidx.navigation.findNavController
 
 import com.polotechnologies.heroes.R
 import com.polotechnologies.heroes.adapters.FavouriteHerosRecyclerAdapter
-import com.polotechnologies.heroes.dataModels.Hero
 import com.polotechnologies.heroes.database.HeroesDatabase
-import com.polotechnologies.heroes.dataModels.FavouriteHero
 import com.polotechnologies.heroes.databinding.FragmentFavouriteBinding
 import com.polotechnologies.heroes.uiHosts.HomeFragmentDirections
 import com.polotechnologies.heroes.viewModelFactory.FavouritesViewModelFactory
@@ -66,8 +64,7 @@ class FavouriteFragment : Fragment(), SearchView.OnQueryTextListener,
 
         mViewModel.selectedHero.observe(viewLifecycleOwner, Observer {
             if(it!=null){
-                val hero  = favouriteHeroToHero(it)
-                val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(hero)
+                val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(it)
                 activity!!.findNavController(R.id.nav_host_main).navigate(action)
                 mViewModel.displaySelectedHeroComplete()
             }
@@ -81,18 +78,6 @@ class FavouriteFragment : Fragment(), SearchView.OnQueryTextListener,
         })
 
         return mBinding.root
-    }
-
-    private fun favouriteHeroToHero(favouriteHero: FavouriteHero?): Hero {
-        return Hero(
-            favouriteHero!!.name!!,
-            favouriteHero.powerstats!!,
-            favouriteHero.biography!!,
-            favouriteHero.appearance!!,
-            favouriteHero.work!!,
-            favouriteHero.connections!!,
-            favouriteHero.image!!
-        )
     }
 
     private fun inflateSearchMenu() {

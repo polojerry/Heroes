@@ -9,7 +9,7 @@ import com.polotechnologies.heroes.dataModels.FavouriteHero
 import com.polotechnologies.heroes.dataModels.Hero
 import com.polotechnologies.heroes.database.typeConverters.*
 
-@Database(entities = [FavouriteHero::class, Hero::class], version = 3, exportSchema = false )
+@Database(entities = [Hero::class], version = 4, exportSchema = false )
 @TypeConverters(PowerStatsConverter::class, BiographyConverter::class, AppearanceConverter::class,
     WorkConverter::class, ConnectionsConverter::class, ImageConverter::class)
 abstract class HeroesDatabase : RoomDatabase() {
