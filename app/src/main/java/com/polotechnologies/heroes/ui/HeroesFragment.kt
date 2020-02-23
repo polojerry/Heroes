@@ -39,11 +39,7 @@ class HeroesFragment : Fragment(), SearchView.OnQueryTextListener, Toolbar.OnMen
         mBinding.tbMain.setOnMenuItemClickListener(this)
         inflateSearchMenu()
 
-        mHeroesViewModelFactory =
-            HeroesViewModelFactory(
-                "man",
-                activity!!.application
-            )
+        mHeroesViewModelFactory = HeroesViewModelFactory("", activity!!.application)
         mViewModel = ViewModelProvider(this, mHeroesViewModelFactory).get(HeroesViewModel::class.java)
         mBinding.viewModel = mViewModel
 
@@ -75,8 +71,8 @@ class HeroesFragment : Fragment(), SearchView.OnQueryTextListener, Toolbar.OnMen
 
     private fun refreshHeroes() {
         mViewModel.fetchHeroes("man")
-        mViewModel.heroStatus.observe(viewLifecycleOwner, Observer {
-            when (it) {
+        mViewModel.heroStatus.observe(viewLifecycleOwner, Observer { apiStatus ->
+            when (apiStatus) {
                 HeroApiStatus.DONE -> {
                     mBinding.swipeRefreshHeroes.isRefreshing = false
                 }

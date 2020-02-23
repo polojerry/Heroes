@@ -30,10 +30,6 @@ class HeroesViewModel(heroName: String?, app: Application) : ViewModel() {
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
-    init {
-        fetchHeroes(heroName)
-    }
-
 
     fun fetchHeroes(heroName: String?) {
 
