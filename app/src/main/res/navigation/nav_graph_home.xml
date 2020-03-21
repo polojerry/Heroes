@@ -9,19 +9,10 @@
         android:id="@+id/heroesFragment"
         android:name="com.polotechnologies.heroes.ui.HeroesFragment"
         android:label="HeroesFragment"
-        tools:layout="@layout/fragment_heroes">
-        <action
-            android:id="@+id/action_heroesFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment"
-            app:popUpTo="@id/heroesFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_heroes"/>
     <fragment
         android:id="@+id/favouriteFragment"
         android:name="com.polotechnologies.heroes.ui.FavouriteFragment"
         android:label="FavouriteFragment"
         tools:layout="@layout/fragment_favourite"/>
-    <fragment
-        android:id="@+id/settingsFragment"
-        android:name="com.polotechnologies.heroes.ui.SettingsFragment"
-        android:label="SettingsFragment" />
 </navigation>

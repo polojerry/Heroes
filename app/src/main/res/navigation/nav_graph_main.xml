@@ -14,6 +14,10 @@
             android:id="@+id/action_homeFragment_to_detailFragment"
             app:destination="@id/detailFragment"
             app:enterAnim="@anim/nav_enter_from_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment"
+            app:popUpTo="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
@@ -28,4 +32,8 @@
             app:destination="@id/homeFragment"
             app:enterAnim="@anim/nav_exit_from_left" />
     </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.polotechnologies.heroes.ui.SettingsFragment"
+        android:label="SettingsFragment" />
 </navigation>

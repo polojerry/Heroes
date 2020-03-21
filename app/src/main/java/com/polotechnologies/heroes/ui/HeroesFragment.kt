@@ -120,7 +120,7 @@ class HeroesFragment : Fragment(), SearchView.OnQueryTextListener, Toolbar.OnMen
                 return true
             }
             R.id.action_settings->{
-                findNavController().navigate(R.id.action_heroesFragment_to_settingsFragment)
+                activity!!.findNavController(R.id.nav_host_main).navigate(R.id.action_homeFragment_to_settingsFragment)
                 return true
             }
         }
