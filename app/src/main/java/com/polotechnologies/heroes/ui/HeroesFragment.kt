@@ -14,6 +14,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.polotechnologies.heroes.R
 import com.polotechnologies.heroes.adapters.HeroRecyclerAdapter
 import com.polotechnologies.heroes.databinding.FragmentHeroesBinding
@@ -113,8 +114,15 @@ class HeroesFragment : Fragment(), SearchView.OnQueryTextListener, Toolbar.OnMen
     }
 
     override fun onMenuItemClick(item: MenuItem?): Boolean {
-        if(item!!.itemId == R.id.action_refresh){
-            refreshHeroes()
+        when(item!!.itemId){
+            R.id.action_refresh->{
+                refreshHeroes()
+                return true
+            }
+            R.id.action_settings->{
+                findNavController().navigate(R.id.action_heroesFragment_to_settingsFragment)
+                return true
+            }
         }
         return true
     }

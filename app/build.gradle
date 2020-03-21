@@ -9,7 +9,7 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'androidx.navigation.safeargs'
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    buildToolsVersion "29.0.3"
     defaultConfig {
         applicationId "com.polotechnologies.heroes"
         minSdkVersion 21
@@ -33,17 +33,11 @@ android {
 }
 
 dependencies {
-    def nav_version = "2.2.0"
-    def retrofit_version = "2.5.0"
-    def version_life_cycle = "2.2.0"
-    def version_kotlin_coroutines = "1.1.0"
-    def version_retrofit_coroutines_adapter = "0.9.2"
-    def version_room = "2.2.3"
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.core:core-ktx:1.1.0'
+    implementation 'androidx.core:core-ktx:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.12'
@@ -51,14 +45,14 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     //Glide
-    implementation 'com.github.bumptech.glide:glide:4.9.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+    implementation "com.github.bumptech.glide:glide:$version_glide"
+    kapt "com.github.bumptech.glide:compiler:$version_glide"
 
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
 
     //Material Design
-    implementation 'com.google.android.material:material:1.2.0-alpha04'
+    implementation "com.google.android.material:material:$version_material_design"
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
@@ -79,8 +73,8 @@ dependencies {
     kapt "androidx.room:room-compiler:$version_room"
 
     //Kotshi
-    implementation "se.ansman.kotshi:api:2.2.3"
-    kapt "se.ansman.kotshi:compiler:2.2.3"
+    implementation "se.ansman.kotshi:api:$version_kotshi"
+    kapt "se.ansman.kotshi:compiler:$version_kotshi"
 
     //Coroutines and Retrofit Coroutines Adapter
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version_kotlin_coroutines"
@@ -88,6 +82,9 @@ dependencies {
     implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$version_retrofit_coroutines_adapter"
 
     //Circle ImageView
-    implementation 'de.hdodenhof:circleimageview:3.0.0'
-    
+    implementation "de.hdodenhof:circleimageview:$version_circle_image"
+
+    //Preference Fragment
+    implementation "androidx.preference:preference:$version_preference"
+
 }
