@@ -29,22 +29,39 @@ fun bindImage(imageView: AppCompatImageView, hero: Hero) {
 fun bindText(textView: AppCompatTextView, hero: Hero) {
     var aliases = ""
 
-    for (alias in hero.biography.aliases){
+    for (alias in hero.biography.aliases) {
         aliases += alias
     }
 
-    aliases = if(aliases == "") "No aliases found." else aliases
+    aliases = if (aliases == "") "No aliases found." else aliases
     textView.text = aliases
 }
 
 @BindingAdapter("heroApiStatus")
 fun bindStatus(imageView: AppCompatImageView, status: HeroApiStatus?) {
-    if (status == HeroApiStatus.ERROR) {
-        imageView.visibility = View.VISIBLE
-        imageView.setImageResource(R.drawable.ic_connection_error)
+    when (status) {
+        HeroApiStatus.ERROR -> {
+            imageView.visibility = View.VISIBLE
+            imageView.setImageResource(R.drawable.ic_connection_error)
+        }
+        HeroApiStatus.NONE -> {
+            imageView.visibility = View.VISIBLE
+        }
+        else -> {
+            imageView.visibility = View.GONE
+        }
+    }
+}
 
-    }else{
-        imageView.visibility = View.GONE
+@BindingAdapter("heroApiStatus")
+fun bindStatus(textView: AppCompatTextView, status: HeroApiStatus?) {
+    when (status) {
+        HeroApiStatus.NONE -> {
+            textView.visibility = View.VISIBLE
+        }
+        else->{
+            textView.visibility = View.GONE
+        }
     }
 }
 
@@ -56,11 +73,7 @@ fun bindStatus(swipeRefreshLayout: SwipeRefreshLayout, status: HeroApiStatus?) {
             swipeRefreshLayout.isRefreshing = true
         }
 
-        HeroApiStatus.DONE -> {
-            swipeRefreshLayout.isRefreshing = false
-        }
-
-        HeroApiStatus.ERROR -> {
+        else -> {
             swipeRefreshLayout.isRefreshing = false
         }
     }

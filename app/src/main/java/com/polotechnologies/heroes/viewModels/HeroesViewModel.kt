@@ -30,6 +30,10 @@ class HeroesViewModel(heroName: String?, app: Application) : ViewModel() {
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
+    init{
+        _heroStatus.value = HeroApiStatus.NONE
+    }
+
 
     fun fetchHeroes(heroName: String?) {
 
@@ -74,5 +78,6 @@ class HeroesViewModel(heroName: String?, app: Application) : ViewModel() {
 public enum class HeroApiStatus{
     LOADING,
     ERROR,
-    DONE
+    DONE,
+    NONE
 }
