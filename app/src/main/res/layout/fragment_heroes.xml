@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="viewModel"
             type="com.polotechnologies.heroes.viewModels.HeroesViewModel" />
@@ -15,6 +14,24 @@
         android:layout_height="match_parent"
         tools:context=".ui.HeroesFragment">
 
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar_home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar_main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:title="@string/toolbar_title_superheros"
+                android:theme="@style/AppTheme.DarkActionBar"
+                app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"
+                app:menu="@menu/menu_home"/>
+        </com.google.android.material.appbar.AppBarLayout>
+
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swipe_refresh_heroes"
             heroApiStatusProgress="@{viewModel.heroStatus}"
@@ -23,7 +40,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/app_bar_home">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_hero"
@@ -41,9 +58,10 @@
             android:layout_marginTop="200dp"
             android:visibility="visible"
             app:heroApiStatus="@{viewModel.heroStatus}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_location_search"
-            tools:layout_editor_absoluteX="195dp" />
+            app:srcCompat="@drawable/ic_location_search" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/search_status"

@@ -37,7 +37,7 @@ class HeroesFragment : Fragment(), SearchView.OnQueryTextListener, Toolbar.OnMen
 
         mBinding = FragmentHeroesBinding.inflate(inflater)
         mBinding.lifecycleOwner = this
-        mBinding.tbMain.setOnMenuItemClickListener(this)
+        mBinding.toolbarMain.setOnMenuItemClickListener(this)
         inflateSearchMenu()
 
         mHeroesViewModelFactory = HeroesViewModelFactory("", activity!!.application)
@@ -90,7 +90,7 @@ class HeroesFragment : Fragment(), SearchView.OnQueryTextListener, Toolbar.OnMen
     }
 
     private fun inflateSearchMenu() {
-        val toolbar = mBinding.tbMain
+        val toolbar = mBinding.toolbarMain
         val searchManager = context!!.getSystemService(Context.SEARCH_SERVICE) as SearchManager
         val searchView = toolbar.menu.findItem(R.id.action_search).actionView as SearchView
 
