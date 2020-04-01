@@ -72,6 +72,7 @@
             android:textSize="18sp"
             android:textStyle="italic"
             app:layout_constraintEnd_toEndOf="@+id/img_loading_status"
+            app:layout_constraintStart_toStartOf="@+id/img_loading_status"
             app:layout_constraintTop_toBottomOf="@+id/img_loading_status" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

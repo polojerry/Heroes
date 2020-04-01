@@ -1,7 +1,7 @@
 package com.polotechnologies.heroes.viewModels
 
 import android.app.Application
-import android.graphics.drawable.AnimatedVectorDrawable
+import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
@@ -49,17 +49,6 @@ class DetailViewModel(hero: Hero, val app: Application, val database: FavouriteH
 
         coroutineScope.launch {
             val hero = _selectedHero.value
-            /*val favouriteHero =
-                FavouriteHero(
-                    hero!!.name,
-                    hero.powerstats,
-                    hero.biography,
-                    hero.appearance,
-                    hero.work,
-                    hero.connections,
-                    hero.image
-                )
-*/
             val status = saveFavouriteHero(hero!!)
             _statusAddToFavourite.value = status > 0
         }
@@ -127,14 +116,13 @@ class DetailViewModel(hero: Hero, val app: Application, val database: FavouriteH
 
     private fun animateArrowUpDown(view: AppCompatImageView) {
         view.setImageResource(R.drawable.avd_arrow_down_up)
-        val avdArrowDownUp = view.drawable as AnimatedVectorDrawable
+        val avdArrowDownUp = view.drawable as AnimatedVectorDrawableCompat
         avdArrowDownUp.start()
     }
 
     private fun animateArrowDownUp(view: AppCompatImageView) {
         view.setImageResource(R.drawable.avd_arrow_up_down)
-        val avdArrowDownUp = view.drawable as AnimatedVectorDrawable
+        val avdArrowDownUp = view.drawable as AnimatedVectorDrawableCompat
         avdArrowDownUp.start()
     }
-
 }

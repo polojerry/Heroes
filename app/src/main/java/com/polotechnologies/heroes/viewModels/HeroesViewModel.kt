@@ -1,6 +1,7 @@
 package com.polotechnologies.heroes.viewModels
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,6 +9,7 @@ import com.polotechnologies.heroes.dataModels.Hero
 import com.polotechnologies.heroes.database.HeroesDatabase
 import com.polotechnologies.heroes.network.HeroesApi
 import kotlinx.coroutines.*
+import java.lang.Exception
 
 class HeroesViewModel(heroName: String?, app: Application) : ViewModel() {
 
@@ -44,7 +46,9 @@ class HeroesViewModel(heroName: String?, app: Application) : ViewModel() {
             try {
                 _heroStatus.value = HeroApiStatus.LOADING
 
-                val heroList = getHeroDeferred.await().results
+                val queryResult = getHeroDeferred.await()
+
+                val heroList = queryResult.results
 
                 _heroStatus.value = HeroApiStatus.DONE
 
@@ -52,10 +56,14 @@ class HeroesViewModel(heroName: String?, app: Application) : ViewModel() {
                     _heroesData.value = heroList
                 }
 
-
             } catch (t: Throwable) {
-                _heroStatus.value = HeroApiStatus.ERROR
                 _heroesData.value = ArrayList()
+                if(t.message!! == "Unable to resolve host \"superheroapi.com\": No address associated with hostname"){
+                    _heroStatus.value = HeroApiStatus.NO_INTERNET_CONNECTION
+                }else if(t.message == "The following properties were null: response_for (JSON name results-for), results (at path \$)"){
+                    _heroStatus.value = HeroApiStatus.NO_MATCH
+                }
+
             }
         }
 
@@ -77,7 +85,8 @@ class HeroesViewModel(heroName: String?, app: Application) : ViewModel() {
 
 public enum class HeroApiStatus{
     LOADING,
-    ERROR,
+    NO_INTERNET_CONNECTION,
     DONE,
-    NONE
+    NONE,
+    NO_MATCH
 }

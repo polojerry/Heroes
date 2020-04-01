@@ -40,12 +40,17 @@ fun bindText(textView: AppCompatTextView, hero: Hero) {
 @BindingAdapter("heroApiStatus")
 fun bindStatus(imageView: AppCompatImageView, status: HeroApiStatus?) {
     when (status) {
-        HeroApiStatus.ERROR -> {
+        HeroApiStatus.NO_INTERNET_CONNECTION -> {
             imageView.visibility = View.VISIBLE
-            imageView.setImageResource(R.drawable.ic_connection_error)
+            imageView.setImageResource(R.drawable.ic_no_internet_connection)
         }
         HeroApiStatus.NONE -> {
             imageView.visibility = View.VISIBLE
+        }
+
+        HeroApiStatus.NO_MATCH->{
+            imageView.visibility = View.VISIBLE
+            imageView.setImageResource(R.drawable.ic_empty)
         }
         else -> {
             imageView.visibility = View.GONE
@@ -54,14 +59,20 @@ fun bindStatus(imageView: AppCompatImageView, status: HeroApiStatus?) {
 }
 
 @BindingAdapter("heroApiStatus")
-fun bindStatus(textView: AppCompatTextView, status: HeroApiStatus?) {
-    when (status) {
-        HeroApiStatus.NONE -> {
-            textView.visibility = View.VISIBLE
-        }
-        else->{
-            textView.visibility = View.GONE
-        }
+fun bindStatus(textView: AppCompatTextView, status: HeroApiStatus?) = when (status) {
+    HeroApiStatus.NONE -> {
+        textView.visibility = View.VISIBLE
+    }
+    HeroApiStatus.NO_MATCH -> {
+        textView.visibility = View.VISIBLE
+        textView.setText("No Match...")
+    }
+    HeroApiStatus.NO_INTERNET_CONNECTION -> {
+        textView.visibility = View.VISIBLE
+        textView.setText("Error: No Internet Connection...")
+    }
+    else->{
+        textView.visibility = View.GONE
     }
 }
 

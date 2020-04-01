@@ -27,10 +27,7 @@
     <string name="tittle_connection">Connections</string>
     <string name="info_failed_to_add_to_favourite">Failed to Add to Favourites</string>
     <string name="info_added_to_favourite"> Added to Favourites</string>
-    <string name="waiting_to_search">Waiting to Search......</string>
+    <string name="waiting_to_search">Waiting to Search.....</string>
     <string name="menu_settings">Settings</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
