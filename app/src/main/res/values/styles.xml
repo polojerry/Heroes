@@ -12,6 +12,10 @@
         <item name="colorButtonNormal">@color/colorTextIcon</item>
     </style>
 
+    <style name="AppTheme.SplashScreen" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+    </style>
+
     <style name="Heroes.Toolbar" parent="@style/ThemeOverlay.MaterialComponents.ActionBar">
         <item name="colorButtonNormal">@color/colorTextIcon</item>
     </style>

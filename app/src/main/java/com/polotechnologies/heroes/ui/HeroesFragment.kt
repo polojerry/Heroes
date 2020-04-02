@@ -77,14 +77,17 @@ class HeroesFragment : Fragment(), SearchView.OnQueryTextListener, Toolbar.OnMen
                 HeroApiStatus.DONE -> {
                     mBinding.swipeRefreshHeroes.isRefreshing = false
                 }
-                HeroApiStatus.ERROR -> {
+                HeroApiStatus.NO_INTERNET_CONNECTION -> {
                     mBinding.imgLoadingStatus.visibility = View.VISIBLE
-                    mBinding.imgLoadingStatus.setImageResource(R.drawable.ic_connection_error)
+                    mBinding.imgLoadingStatus.setImageResource(R.drawable.ic_no_internet_connection)
                     mBinding.swipeRefreshHeroes.isRefreshing = false
                 }
                 HeroApiStatus.LOADING -> {
                     mBinding.swipeRefreshHeroes.isRefreshing = true
                 }
+               else->{
+                   mBinding.swipeRefreshHeroes.isRefreshing = false
+               }
             }
         })
     }

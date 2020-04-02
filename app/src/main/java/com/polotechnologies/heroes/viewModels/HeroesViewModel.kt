@@ -27,8 +27,7 @@ class HeroesViewModel(heroName: String?, app: Application) : ViewModel() {
     private val _selectedHero = MutableLiveData<Hero>()
     val selectedHero : LiveData<Hero>
         get () = _selectedHero
-
-
+    
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
